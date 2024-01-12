@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/pulsone21/threattrack/dataService/handlers"
-	"github.com/pulsone21/threattrack/dataService/storage"
+	"github.com/pulsone21/threattrack/dataservice/handlers"
+	"github.com/pulsone21/threattrack/dataservice/storage"
 )
 
 type Server struct {

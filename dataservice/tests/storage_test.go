@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/pulsone21/threattrack/dataService/storage"
+	"github.com/pulsone21/threattrack/dataservice/storage"
 	"github.com/stretchr/testify/assert"
 )
 
