@@ -26,7 +26,7 @@ func CreateServer(port, backendAdress string) *Server {
 
 	CreateIncidentHandler(server, backendAdress)
 	CreateIndicatorHandler(server, backendAdress)
-	server.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("static/"))))
+	server.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("frontend/static/"))))
 	fmt.Println("FrontEnd Created")
 	return server
 }

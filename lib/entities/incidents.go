@@ -12,9 +12,9 @@ type Incident struct {
 	Severity     Priority       `json:"severity"`
 	Status       IncidentStatus `json:"status"`
 	IncidentType IncidentType   `json:"type"`
-	Creationdate uint           `json:"creationdate"`
+	Creationdate int64          `json:"creationdate"`
 	Tasks        []Task         `json:"tasks"`
-	Owner        User           `json:"owner"`
+	Owner        *User          `json:"owner"`
 }
 
 type IncidentType struct {
@@ -45,7 +45,7 @@ func NewIncident(name string, severity Priority, incType IncidentType) *Incident
 		Severity:     severity,
 		IncidentType: incType,
 		Status:       Pending,
-		Creationdate: uint(time.Now().Unix()),
+		Creationdate: time.Now().Unix(),
 	}
 }
 
@@ -57,7 +57,8 @@ func NewIncidentType(name string) *IncidentType {
 
 func (i *Incident) ScanTo(scan ScanFunc) error {
 	i.Tasks = []Task{}
-	return scan(
+	var usr User
+	err := scan(
 		&i.Id,
 		&i.Name,
 		&i.Severity,
@@ -65,12 +66,20 @@ func (i *Incident) ScanTo(scan ScanFunc) error {
 		&i.Creationdate,
 		&i.IncidentType.Id,
 		&i.IncidentType.Name,
-		&i.Owner.Id,
-		&i.Owner.Firstname,
-		&i.Owner.Lastname,
-		&i.Owner.Email,
-		&i.Owner.Fullname,
-		&i.Owner.CreatedAt)
+		&usr.Id,
+		&usr.Firstname,
+		&usr.Lastname,
+		&usr.Email,
+		&usr.Fullname,
+		&usr.CreatedAt,
+	)
+	if err != nil {
+		return err
+	}
+	if usr.Firstname != nil {
+		i.Owner = &usr
+	}
+	return nil
 }
 
 func (iT *IncidentType) ScanTo(scan ScanFunc) error {

@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+
 	"github.com/pulsone21/threattrack/dataservice/storage"
 	utils "github.com/pulsone21/threattrack/lib/utils"
 )

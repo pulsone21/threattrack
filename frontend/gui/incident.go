@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"html/template"
 	"io"
-	"log"
 	"net/http"
 	"os"
 
@@ -49,7 +48,7 @@ func CreateIncidentHandler(ser *Server, backendBase string) *IncidentHandler {
 	wd, _ := os.Getwd()
 	iH := &IncidentHandler{
 		backendAdress: fmt.Sprintf("%s/incidents", backendBase),
-		templatePath:  "templates/incident",
+		templatePath:  "frontend/templates/incident",
 	}
 	fmt.Printf("%s/%s\n", wd, iH.templatePath)
 	iH.createHandles(ser)
@@ -61,7 +60,7 @@ func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.Respon
 	fmt.Printf("\nrequesting backend with %s \n", iH.backendAdress)
 	res, err := http.Get(iH.backendAdress)
 	if err != nil {
-		log.Fatalln(err.Error())
+		fmt.Println(err.Error())
 		return entities.InternalServerError(err, uri)
 	}
 	defer res.Body.Close()
@@ -72,12 +71,12 @@ func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.Respon
 	}
 	resbody, err := io.ReadAll(res.Body)
 	if err != nil {
-		log.Fatalln(err.Error())
+		fmt.Println(err.Error())
 		return entities.InternalServerError(err, uri)
 	}
 	tmpl, err := template.ParseFiles(fmt.Sprintf("%s/incidentTable.html", iH.templatePath))
 	if err != nil {
-		log.Fatalln(err.Error())
+		fmt.Println(err.Error())
 		return entities.InternalServerError(err, uri)
 	}
 	var data backendData

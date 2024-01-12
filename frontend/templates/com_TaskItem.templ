@@ -1,13 +1,14 @@
 package templates
 
 import "github.com/pulsone21/threattrack/lib/entities"
+import "fmt"
 
 templ TaskItem(task entities.Task) {
 	<div class="task-container">
 		<div class="task-header">
 			<p class="font-h4">{ task.Title }</p>
 			<div>
-				<p class="font-small">Owner: { task.Owner.Fullname }</p>
+				<p class="font-small">Owner: { fmt.Sprint(task.Owner.Fullname) }</p>
 				switch task.Priority {
 					case entities.Critical:
 						<img src="assets/prioCritical.svg" alt="Critical Priority" title="Critical Priority"/>

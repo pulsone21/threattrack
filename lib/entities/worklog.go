@@ -2,17 +2,16 @@ package entities
 
 import "github.com/google/uuid"
 
-
 type Worklog struct {
-	Id uuid.UUID
-	Content string 
-	Type WorklogType
+	Id          uuid.UUID
+	Content     string
+	Type        WorklogType
 	Incident_Id uuid.UUID
-	Writer User 
-	CreatedAt uint
+	Writer      User
+	CreatedAt   int64
 }
 
-type WorklogType string 
+type WorklogType string
 
 const (
 	WT_General WorklogType = "General"
@@ -29,4 +28,3 @@ func (w *Worklog) ScanTo(scan ScanFunc) error {
 		&w.CreatedAt,
 	)
 }
-

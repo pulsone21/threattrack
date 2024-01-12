@@ -2,14 +2,15 @@ package templates
 
 import (
 	"github.com/pulsone21/threattrack/lib/entities"
+	"fmt"
 )
 
 templ Worklog(w entities.Worklog) {
 	<li>
 		<div>
 			<div class="vertical-container">
-				<p class="font-h4">{ w.Writer.Fullname }</p>
-				<p class="font-smaller font-col-info">{ toTimestamp(w.CreatedAt) }</p>
+				<p class="font-h4">{ fmt.Sprint(w.Writer.Fullname) }</p>
+				<p class="font-smaller font-col-info">{ toTimestamp(w.CreatedAt).String() }</p>
 			</div>
 			<p class="font-small">{ w.Content } </p>
 		</div>

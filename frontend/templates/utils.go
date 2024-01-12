@@ -1,10 +1,9 @@
 package templates
 
 import (
-	"fmt"
 	"time"
 )
 
-func toTimestamp(epoch uint) string {
-	return fmt.Sprint(time.Unix(int64(epoch),0))
+func toTimestamp(epoch int64) time.Time {
+	return time.Unix(epoch, 0)
 }

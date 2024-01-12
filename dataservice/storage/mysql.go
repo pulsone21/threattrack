@@ -66,26 +66,35 @@ func (s *MySqlStorage) HandleGetAll(ctx context.Context, w http.ResponseWriter, 
 	case "incidenttypes":
 		var iTs *[]entities.IncidentType
 		iTs, err = (s.IncidentTypeStore.GetAll(ctx, *qP))
-		for _, it := range *iTs {
-			value = append(value, it)
+		if iTs != nil {
+			for _, it := range *iTs {
+				value = append(value, it)
+			}
 		}
 	case "incidents":
 		var incs *[]entities.Incident
 		incs, err = s.IncidentStore.GetAll(ctx, *qP)
-		for _, it := range *incs {
-			value = append(value, it)
+		if incs != nil {
+			for _, it := range *incs {
+				value = append(value, it)
+			}
 		}
+
 	case "users":
 		var usrs *[]entities.User
 		usrs, err = s.UserStore.GetAll(ctx, *qP)
-		for _, it := range *usrs {
-			value = append(value, it)
+		if usrs != nil {
+			for _, it := range *usrs {
+				value = append(value, it)
+			}
 		}
 	case "tasks":
 		var tasks *[]entities.Task
 		tasks, err = s.TaskStore.GetAll(ctx, *qP)
-		for _, it := range *tasks {
-			value = append(value, it)
+		if tasks != nil {
+			for _, it := range *tasks {
+				value = append(value, it)
+			}
 		}
 	default:
 		return nil, entities.NotImplementedError(fmt.Errorf("entity: %s not implemented", entity), ctx.Value("uri").(string))

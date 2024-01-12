@@ -3,7 +3,6 @@ include .env.local
 export
 
 refresh_deps:
-	@go get
 	@go mod tidy
 
 create_test_img:
@@ -32,6 +31,8 @@ setup_db:
 	@docker exec -i ContentDB mysql -u root -proot < ./devStuff/setup_db.sql
 	@echo "db setuped"
 
+
+
 build_dataservice: refresh_deps
 	@echo "Building dataservice"
 	@go build -o ./bin/dataserviceexe ./cmd/dataservice/main.go
@@ -42,6 +43,7 @@ run_dataservice: build_dataservice
 
 build_frontend: refresh_deps
 	@echo "Building frontend"
+	@templ generate
 	@go build -o ./bin/frontendexe ./cmd/frontend/main.go
 
 run_frontend: build_frontend

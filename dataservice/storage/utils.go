@@ -58,8 +58,7 @@ func ExtractUrlQueries(uV url.Values, withAdditionalParams bool) (int, int, map[
 //
 // Subpath starts without an "/"
 func LoadRawSQL(subpath string) (string, error) {
-	fmt.Println(os.Getwd())
-	path := path.Join("queries/", subpath)
+	path := path.Join("dataservice/queries/", subpath)
 	fmt.Println(path)
 	f, ioErr := os.ReadFile(path)
 	if ioErr != nil {

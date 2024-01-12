@@ -9,25 +9,25 @@ import (
 
 type User struct {
 	Id        uuid.UUID `json:"id"`
-	Firstname string    `json:"firstname"`
-	Lastname  string    `json:"lastname"`
-	Email     string    `json:"email"`
-	Fullname  string    `json:"fullname"`
-	CreatedAt uint      `json:"created_at"`
+	Firstname *string   `json:"firstname"`
+	Lastname  *string   `json:"lastname"`
+	Email     *string   `json:"email"`
+	Fullname  *string   `json:"fullname"`
+	CreatedAt *int64    `json:"created_at"`
 	//TODO Role Concecpt
 	//TODO Auth Concept
 }
 
 func NewUser(firstname, lastname, email string) *User {
 	epoch := time.Now().Unix()
-
+	fullName := fmt.Sprintf("%s %s", firstname, lastname)
 	return &User{
 		Id:        uuid.New(),
-		Firstname: firstname,
-		Lastname:  lastname,
-		Email:     email,
-		Fullname:  fmt.Sprintf("%s %s", firstname, lastname),
-		CreatedAt: uint(epoch),
+		Firstname: &firstname,
+		Lastname:  &lastname,
+		Email:     &email,
+		Fullname:  &fullName,
+		CreatedAt: &epoch,
 	}
 }
 
