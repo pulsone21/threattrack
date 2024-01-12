@@ -1,5 +1,5 @@
 .PHONY: help
-include .env
+include .env.local
 export
 
 refresh_deps:
