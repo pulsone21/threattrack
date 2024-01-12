@@ -1,0 +1,139 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatTrack</title>
+    <link rel="stylesheet" href="assets/default.css" type="text/css">
+    <link rel="icon" href="assets/Logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,500;0,700;0,900;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@1.9.9"
+        integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo-section vertical-container">
+            <a class="clickableEl" title="Home" href="/"><img src="assets/Logo.svg" alt="Logo Goes here"></a>
+            <h3 class="font-h3">ThreatTrack</h3>
+        </div>
+        <div id="searchBar">
+            <input type="text" placeholder="Search for something...">
+        </div>
+        <div class="vertical-container actionBar">
+            <button class="clickableEl" title="Dashboard" hx-get="/dashboard/" hx-target="#contentBody"><img
+                    src="assets/dashboard.svg" alt="Dashboard"></img></button>
+            <button class="clickableEl" title="Incidents" hx-get="/incidentTable/" hx-target="#contentBody"><img
+                    src="assets/Incidents.svg" alt="Incidents"></img></button>
+            <button class="clickableEl" title="Indicators" hx-get="/indicatorTable/" hx-target="#contentBody"><img
+                    src="assets/Indicator.svg" alt="IOCs"></img></button>
+            <button class="clickableEl" title="Settings" hx-get="/settings/" hx-target="#contentBody"><img
+                    src="assets/settings.svg" alt="Settings"></img></button>
+            <button class="clickableEl" title="LogOut" hx-get="/logout" hx-target="#contentBody"><img
+                    src="assets/logout.svg" alt="Logout"></img></button>
+        </div>
+    </nav>
+    <div id="contentBody">
+        <div class="inc-grid font-body" style="height: calc(100vh - 72px)">
+            <div class="inc-grid-el inc-header">
+                <span class="font-h3">IncidentTile - Planning</span>
+                <div class="vertical-container">
+                    <button class="btn">Do Something</button>
+                    <button class="btn">Somehting other</button>
+                    <button class="btn">Close</button>
+                </div>
+            </div>
+            <div class="grid_rs2re4_cs1ce2 inc-grid-el inc-grid-actionbar">
+                <button class="clickableEl" title="Summary View">
+                    <img style="width: 35px; height: 35px" src="assets/inc_home.svg" alt="Summary View" />
+                </button>
+                <button class="clickableEl" title="Worklogs">
+                    <img style="width: 35px; height: 35px" src="assets/feed.svg" alt="Worklogs" />
+                </button>
+                <button class="clickableEl" title="Planning">
+                    <img style="width: 35px; height: 35px" src="assets/planing.svg" alt="Planning" />
+                </button>
+                <button class="clickableEl" title="IOC View">
+                    <img style="width: 35px; height: 35px" src="assets/IOCView.svg" alt="IOC View" />
+                </button>
+            </div>
+            <div class="grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar">
+                <button class="clickableEl" title="Summary View">
+                    <img style="width: 35px; height: 35px" src="assets/inc_home.svg" alt="Summary View" />
+                </button>
+                <button class="clickableEl" title="Worklogs">
+                    <img style="width: 35px; height: 35px" src="assets/feed.svg" alt="Worklogs" />
+                </button>
+                <button class="clickableEl" title="Planning">
+                    <img style="width: 35px; height: 35px" src="assets/planing.svg" alt="Planning" />
+                </button>
+                <button class="clickableEl" title="IOC View">
+                    <img style="width: 35px; height: 35px" src="assets/IOCView.svg" alt="IOC View" />
+                </button>
+            </div>
+            <div class="inc-grid-el grid_rs2re6_cs2ce3">
+                <p class="font-h3">Playbooks</p>
+                <div class="task-list">
+                    <div class="task-container">
+                        <div class="task-header">
+                            <p class="font-h4">Playbook-Name</p>
+                            <div>
+                                <button class="btn">Detailed View</button>
+                                <button class="btn">Add To incident</button>
+                            </div>
+                        </div>
+                        <p class="font-small playbook-desc">
+                            Eiusmod laboris proident ea aliquip anim proident qui aute. Ad Lorem
+                            sunt incididunt voluptate commodo elit laboris. Sint quis
+                            reprehenderit dolor culpa. Laborum velit ipsum et culpa exercitation
+                            id sint laboris sunt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-grid-el grid_rs2re6_cs3ce4">
+                <p class="font-h3">Backlog</p>
+                <div class="task-list">
+
+                </div>
+            </div>
+            <div class="inc-grid-el grid_rs2re6_cs4ce5">
+                <p class="font-h3">Doing</p>
+                <div class="task-list">
+                    <div class="task-container">
+                        <div class="task-header">
+                            <p class="font-h4">Task 1</p>
+                            <div>
+                                <p class="font-small">Owner: Max Musterman</p>
+                                <img src="assets/prioCritical.svg" alt="Critical Priority" />
+                            </div>
+                        </div>
+                        <p class="font-small playbook-desc">
+                            Eiusmod laboris proident ea aliquip anim proident qui aute. Ad Lorem
+                            sunt incididunt voluptate commodo elit laboris. Sint quis
+                            reprehenderit dolor culpa. Laborum velit ipsum et culpa exercitation
+                            id sint laboris sunt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="inc-grid-el grid_rs2re6_cs5ce6">
+                <p class="font-h3">Done</p>
+                <div class="task-list">
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- END OF CONTENT BODY -->
+    </div>
+</body>
+
+</html>

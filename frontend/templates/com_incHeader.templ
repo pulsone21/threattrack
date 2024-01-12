@@ -1,0 +1,14 @@
+package templates
+
+import "fmt"
+
+templ IncHeader(incName, PageName string ) {
+	<div class="inc-grid-el inc-header">
+		<span class="font-h3">{ fmt.Sprintf("%s - %s", incName, PageName) }</span>
+		<div class="vertical-container">
+			<button class="btn">Do Something</button>
+			<button class="btn">Somehting other</button>
+			<button class="btn">Close</button>
+		</div>
+	</div>
+}

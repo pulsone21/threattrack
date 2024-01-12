@@ -1,0 +1,33 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ThreatTrack</title>
+        <link rel="stylesheet" href="assets/default.css" type="text/css">
+        <link rel="icon" href="assets/Logo.svg">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,500;0,700;0,900;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;1,400&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo-section vertical-container">
+                <a class="clickableEl" title="Home" href="/"><img src="assets/Logo.svg" alt="Logo Goes here"></a>
+                <h3 class="font-h3">ThreatTrack</h3>
+            </div>
+            <div id="searchBar">
+                <input type="text" placeholder="Search for something...">
+            </div>
+            <div class="vertical-container actionBar">
+                <button class="clickableEl" title="Dashboard" hx-get="/dashboard/" hx-target="#contentBody" ><img src="assets/dashboard.svg" alt="Dashboard"></img></button>
+                <button class="clickableEl" title="Incidents" hx-get="/incidentTable/" hx-target="#contentBody"><img src="assets/Incidents.svg" alt="Incidents"></img></button>
+                <button class="clickableEl" title="Indicators" hx-get="/indicatorTable/" hx-target="#contentBody"><img src="assets/Indicator.svg" alt="IOCs"></img></button>
+                <button class="clickableEl" title="Settings" hx-get="/settings/" hx-target="#contentBody"><img src="assets/settings.svg" alt="Settings"></img></button>
+                <button class="clickableEl" title="LogOut" hx-get="/logout" hx-target="#contentBody"><img src="assets/logout.svg" alt="Logout"></img></button>
+            </div>
+        </nav>
+        <div id="contentBody">
+            
+    </body>
+</html>

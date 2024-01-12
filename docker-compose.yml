@@ -1,0 +1,54 @@
+services:
+  db:
+    container_name: DB
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQLROOTPW}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PW}
+      MYSQL_DATABASE: ${MYSQL_DBNAME}
+    ports:
+      - ${MYSQL_PORT}:3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 1s
+      retries: 40
+    networks:
+      - backend
+    volumes:
+      - ./database/db:/var/lib/mysql
+
+  backend:
+    container_name: Backend
+    build: ./dataService
+    env_file:
+      - .env
+    ports:
+      - ${BACKEND_PORT}:${BACKEND_PORT}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - frontend
+      - backend
+    restart: on-failure
+
+  frontend:
+    container_name: Frontend
+    build: ./frontend
+    env_file:
+      - .env
+    ports:
+      - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    depends_on:
+      - backend
+    networks:
+      - frontend
+      - backend
+    restart: on-failure
+
+networks:
+  backend:
+    internal: true
+  frontend:

@@ -1,0 +1,68 @@
+package templates
+
+import "github.com/pulsone21/threattrack/lib/entities"
+
+templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities.Task) {
+	<div class="inc-grid font-body" style="height: calc(100vh - 72px)">
+		@IncHeader(inc.Name, "Planing")
+		@IncNavbar(inc.Id.String())
+		<div class="grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar">
+			<button class="clickableEl" title="Summary View">
+				<img style="width: 35px; height: 35px" src="assets/inc_home.svg" alt="Summary View"/>
+			</button>
+			<button class="clickableEl" title="Worklogs">
+				<img style="width: 35px; height: 35px" src="assets/feed.svg" alt="Worklogs"/>
+			</button>
+			<button class="clickableEl" title="Planning">
+				<img style="width: 35px; height: 35px" src="assets/planing.svg" alt="Planning"/>
+			</button>
+			<button class="clickableEl" title="IOC View">
+				<img style="width: 35px; height: 35px" src="assets/IOCView.svg" alt="IOC View"/>
+			</button>
+		</div>
+		<div class="inc-grid-el grid_rs2re6_cs2ce3">
+			<p class="font-h3">Playbooks</p>
+			<div class="task-list">
+				<!-- 
+            {{range .Playbooks}}
+            <div class="task-container">
+                <div class="task-header">
+                    <p class="font-h4">{{.Name}}</p>
+                    <div>
+                        <button class="btn">Detailed View</button>
+                        <button class="btn">Add To incident</button>
+                    </div>
+                </div>
+                <p class="font-small playbook-desc">
+                    {{.Description}}
+                </p>
+            </div>
+            {{end}} -->
+			</div>
+		</div>
+		<div class="inc-grid-el grid_rs2re6_cs3ce4">
+			<p class="font-h3">Backlog</p>
+			<div class="task-list">
+				for _, item := range backlog {
+					@TaskItem(item)
+				}
+			</div>
+		</div>
+		<div class="inc-grid-el grid_rs2re6_cs4ce5">
+			<p class="font-h3">Doing</p>
+			<div class="task-list">
+				for _, item := range doings {
+					@TaskItem(item)
+				}
+			</div>
+		</div>
+		<div class="inc-grid-el grid_rs2re6_cs5ce6">
+			<p class="font-h3">Done</p>
+			<div class="task-list">
+				for _, item := range doings {
+					@TaskItem(item)
+				}
+			</div>
+		</div>
+	</div>
+}

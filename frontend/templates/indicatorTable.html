@@ -1,0 +1,46 @@
+<div>
+    <div class="horizontal-container" >
+        <div class="vertical-container" style="margin-top: 15px;">
+            <button class="btn">Dummy Button</button>
+            <!-- <input type="date"> Create a usefull date picker like splunk or something -->
+            <div id="searchBar" style="width: 90%;">
+                <input type="text" placeholder="Search for Indicators">
+            </div>
+        </div>
+        <div id="incidentActionBar" class="vertical-container" style="justify-content:flex-start !important">
+                <button class="btn" >Select All</button>
+                <button class="btn" >Button 2</button>
+                <button class="btn" >Button 3</button>
+                <button class="btn" >Button 4</button>
+                <button class="btn" >Button 5</button>
+                <button class="btn" >Button 6</button>
+        </div>
+        <div>
+            <table>
+                <thead>
+                        <th style="width: 20px !important;" class="font-h4"></th>
+                        <th class="font-h4">ID</th>
+                        <th class="font-h4">Title</th>
+                        <th class="font-h4">Last Seen</th>
+                        <th class="font-h4">First Seen</th>
+                        <th class="font-h4">Type</th>
+                        <th class="font-h4">Verdict</th>
+                </thead>
+                <tbody class="font-body">
+                {{range .Indicators}}
+                    <tr>
+                        <td style="width: 20px !important;"><input type="checkbox" class="incSelector" id="{{.Id}}"></td>
+                        <td style="width: 250px !important;"><span>{{.Id}}</span></td>
+                        <td style="width: 350px !important"><div class="clickableText" hx-target="#contentBody" hx-get="/indicator/?id={{.Id}}"><span>{{.Value}}</span></div></td>
+                        <!-- TODO First Seen and Last Seen implement correctly -->
+                        <td style="width: 150px !important;"><span>22/12/2023</span></td>
+                        <td style="width: 150px !important;"><span>22/12/2023</span></td>
+                        <td style="width: 80px !important;"><span>{{.Type.Name}}</span></td>
+                        <td style="width: 80px !important;"><span class="verdict-{{.Verdict}}">{{.Verdict}}</span></td>
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

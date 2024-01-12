@@ -1,0 +1,25 @@
+package templates
+
+import "github.com/pulsone21/threattrack/lib/entities"
+
+templ TaskItem(task entities.Task) {
+	<div class="task-container">
+		<div class="task-header">
+			<p class="font-h4">{ task.Title }</p>
+			<div>
+				<p class="font-small">Owner: { task.Owner.Fullname }</p>
+				switch task.Priority {
+					case entities.Critical:
+						<img src="assets/prioCritical.svg" alt="Critical Priority" title="Critical Priority"/>
+					case entities.High:
+						<img src="assets/prioHigh.svg" alt="High Priority" title="High Priority"/>
+					case entities.Medium:
+						<img src="assets/prioMedium.svg" alt="Medium Priority" title="Medium Priority"/>
+					default:
+						<img src="assets/prioLow.svg" alt="Low Priority" title="Low Priority"/>
+				}
+			</div>
+		</div>
+		<p class="font-small playbook-desc">{ task.Description }</p>
+	</div>
+}

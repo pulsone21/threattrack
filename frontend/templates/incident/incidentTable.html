@@ -1,0 +1,45 @@
+<div>
+    <div class="horizontal-container" >
+        <div class="vertical-container" style="margin-top: 15px;">
+            <button class="btn">Dummy Button</button>
+            <!-- TODO <input type="date"> Create a usefull date picker like splunk or something -->
+            <div id="searchBar" style="width: 90%;">
+                <input type="text" placeholder="Search for Incidents">
+            </div>
+        </div>
+        <div id="incidentActionBar" class="vertical-container" style="justify-content:flex-start !important">
+                <button class="btn" >Select All</button>
+                <button class="btn" >Button 2</button>
+                <button class="btn" >Button 3</button>
+                <button class="btn" >Button 4</button>
+                <button class="btn" >Button 5</button>
+                <button class="btn" >Button 6</button>
+        </div>
+        <div>
+            <table>
+                <thead>
+                        <th style="width: 20px !important;" class="font-h4"></th>
+                        <th class="font-h4">ID</th>
+                        <th class="font-h4">Title</th>
+                        <th class="font-h4">Status</th>
+                        <th class="font-h4">Severity</th>
+                        <th class="font-h4">Type</th>
+                        <th class="font-h4">Owner</th>
+                </thead>
+                <tbody class="font-body">
+                {{range .Incidents}}
+                    <tr>
+                        <td style="width: 20px !important;"><input type="checkbox" class="incSelector" id="{{.Id}}"></td>
+                        <td style="width: 370px !important;"><span>{{.Id}}</span></td>
+                        <td><div class="clickableText" hx-target="#contentBody" hx-get="/incident/summary?id={{.Id}}"><span>{{.Name}}</span></div></td>
+                        <td style="width: 80px !important;"><span>open</span></td>
+                        <td style="width: 80px !important;"><span>{{.Severity}}</span></td>
+                        <td style="width: 80px !important;"><span>{{.IncidentType.Name}}</span></td>
+                        <td style="width: 180px !important;"><span>Admin</span></td>
+                    </tr>
+                {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
