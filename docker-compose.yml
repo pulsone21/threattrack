@@ -21,7 +21,7 @@ services:
 
   backend:
     container_name: Backend
-    build: ./dataService
+    build: ./cmd/dataservice
     env_file:
       - .env
     ports:
@@ -36,7 +36,7 @@ services:
 
   frontend:
     container_name: Frontend
-    build: ./frontend
+    build: ./cmd/frontend
     env_file:
       - .env
     ports:
