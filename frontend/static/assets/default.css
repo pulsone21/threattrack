@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --col-main: hsl(208, 54%, 7%);
     --col-main-shade-1: hsl(208, 54%, 10%);
@@ -20,8 +24,10 @@
     --col-font-shade-1: hsla(216, 56%, 84%, 0.8);
     --col-font-shade-2: hsla(211, 56%, 76%, 0.502);
     --col-font-shade-3: hsl(211, 56%, 68%, 0.3);
-
 }
+
+
+
 
 ul {
     list-style-type: none;
@@ -350,31 +356,6 @@ td {
     width: 100%;
     margin: 5px 0px;
     justify-content: center;
-}
-
-
-.inc-main-info {
-    grid-area: 2 / 2 / 4 / 3;
-}
-
-.inc-sec-info {
-    grid-area: 2 / 3 / 4 / 4;
-}
-
-.inc-activities {
-    grid-area: 4 / 1 / 6 / 3;
-}
-
-.inc-worklogs {
-    grid-area: 4 / 3 / 6 / 6;
-}
-
-.inc-placeholder {
-    grid-area: 2 / 4 / 4 / 5;
-}
-
-.inc-user-overview {
-    grid-area: 2 / 5 / 4 / 6;
 }
 
 .grid_rs1re2_cs1ce6 {

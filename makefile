@@ -54,3 +54,10 @@ test: start_db reset_db setup_db generate_data create_test_img
 	@docker start TestBackend
 	@go test -run ^TestSuite$  -v ./tests
 
+
+tailwind_watch:
+	@tailwindcss -i frontend/static/assets/default.css -o frontend/static/assets/output.css --watch
+
+tailwind_build:
+	@tailwindcss -i frontend/static/assets/default.css -o frontend/static/assets/output.css --minify
+	
