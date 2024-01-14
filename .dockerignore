@@ -2,3 +2,14 @@ database/
 bin/
 README.md
 makefile
+frontend/static/assets/default.css
+frontend/static/test.html
+**/.DS_Store
+devStuff/
+docker-compose.yml
+**/.git
+**/.gitignore
+.env.local
+ideas.md
+LICENSE
+**/.vscode

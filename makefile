@@ -41,7 +41,7 @@ run_dataservice: build_dataservice
 	@echo "Running dataservice"
 	@./bin/dataserviceexe
 
-build_frontend: refresh_deps
+build_frontend: refresh_deps tailwind_build
 	@echo "Building frontend"
 	@templ generate
 	@go build -o ./bin/frontendexe ./cmd/frontend/main.go
