@@ -6,28 +6,30 @@ import (
 )
 
 templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
-	<div class="inc-grid font-body">
-		<div class="inc-grid-el inc-main-info">
+	<div class="font-body">
+		@IncHeader(inc.Name, "Summary")
+		@IncNavbar(inc.Id.String())
+		<div class="inc-grid-el grid_rs2re4_cs2ce3">
 			<ul>
 				<li>{ fmt.Sprint(inc.Status) }</li>
 				<li>{ fmt.Sprint(inc.IncidentType) }</li>
 				<li>{ fmt.Sprint(inc.Severity) }</li>
 			</ul>
 		</div>
-		<div class="inc-grid-el inc-sec-info">
+		<div class="inc-grid-el grid_rs2re4_cs3ce4">
 			<ul>
 				<li>{ toTimestamp(inc.Creationdate).String() }</li>
 				<li>last Updated At</li>
 				<li>Closed at</li>
 			</ul>
 		</div>
-		<div class="inc-grid-el inc-activities" style="border: None !important; background:none !important;">
+		<div class="inc-grid-el grid_rs4re6_cs1ce3" style="border: None !important; background:none !important;">
 			<p class="font-h4">Activities</p>
 			<div class="timeline">
 				NOT IMPLEMENTED YET
 			</div>
 		</div>
-		<div class="inc-grid-el inc-worklogs">
+		<div class="inc-grid-el grid_rs4re6_cs3ce6">
 			<p class="font-h4">Worklogs</p>
 			<div>
 				<p>Most Recent</p>
@@ -61,23 +63,27 @@ templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
 					</div>
 				</div>
 			</div>
-			<div class="inc-grid-el inc-placeholder">Customer Infos </div>
-			<div class="inc-grid-el inc-user-overview vertical-container">
-				<div>
-					<span class="font-h4">Owner</span>
+		</div>
+		<div class="inc-grid-el grid_rs2re4_cs4ce5">Customer Infos </div>
+		<div class="inc-grid-el grid_rs2re4_cs5ce6 vertical-container">
+			<div>
+				<span class="font-h4">Owner</span>
+				if (inc.Owner == nil) {
+					<span>No owner</span>
+				} else {
 					<ul>
 						<li>{ fmt.Sprint(inc.Owner.Fullname) }</li>
 						<li>{ fmt.Sprint(inc.Owner.Email) }</li>
 					</ul>
-				</div>
-				<div>
-					<span class="font-h4">Contributors</span>
-					<ul>
-						<li>Contro 1</li>
-						<li>Contro 2</li>
-						<li>Contro 2</li>
-					</ul>
-				</div>
+				}
+			</div>
+			<div>
+				<span class="font-h4">Contributors</span>
+				<ul>
+					<li>Contro 1</li>
+					<li>Contro 2</li>
+					<li>Contro 2</li>
+				</ul>
 			</div>
 		</div>
 	</div>

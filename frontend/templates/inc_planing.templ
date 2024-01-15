@@ -6,7 +6,7 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
 	<div class="inc-grid font-body" style="height: calc(100vh - 72px)">
 		@IncHeader(inc.Name, "Planing")
 		@IncNavbar(inc.Id.String())
-		<div class="grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar">
+		<div class="grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar flex">
 			<button class="clickableEl" title="Summary View">
 				<img style="width: 35px; height: 35px" src="assets/inc_home.svg" alt="Summary View"/>
 			</button>
