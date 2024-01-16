@@ -1,8 +1,9 @@
-package templates
+package components
 
 import (
 	"github.com/pulsone21/threattrack/lib/entities"
 	"fmt"
+	"github.com/pulsone21/threattrack/frontend/templates/viewutils"
 )
 
 templ Worklog(w entities.Worklog) {
@@ -10,7 +11,7 @@ templ Worklog(w entities.Worklog) {
 		<div>
 			<div class="vertical-container">
 				<p class="font-h4">{ fmt.Sprint(w.Writer.Fullname) }</p>
-				<p class="font-smaller font-col-info">{ toTimestamp(w.CreatedAt).String() }</p>
+				<p class="font-smaller font-col-info">{ viewutils.ToTimestamp(w.CreatedAt).String() }</p>
 			</div>
 			<p class="font-small">{ w.Content } </p>
 		</div>

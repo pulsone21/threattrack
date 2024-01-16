@@ -1,0 +1,20 @@
+package incComponents
+
+import "github.com/pulsone21/threattrack/lib/entities"
+import "fmt"
+
+templ IncRowItem(inc entities.Incident) {
+	<tr>
+		<td style="width: 20px !important;"><input type="checkbox" class="incSelector" id={ inc.Id.String() }/></td>
+		<td style="width: 370px !important;"><span>{ inc.Id.String() }</span></td>
+		<td><div class="clickableText" hx-target="#contentBody" hx-get={ fmt.Sprintf("/incident/summary?id=%s", inc.Id) }><span>{ inc.Name }</span></div></td>
+		<td style="width: 80px !important;"><span>open</span></td>
+		<td style="width: 80px !important;"><span>{ fmt.Sprint(inc.Severity) }</span></td>
+		<td style="width: 80px !important;"><span>{ inc.IncidentType.Name }</span></td>
+		if (inc.Owner != nil) {
+			<td style="width: 180px !important;"><span>{ fmt.Sprint(inc.Owner.Fullname) }</span></td>
+		} else {
+			<td style="width: 180px !important;"><span>Unassignt</span></td>
+		}
+	</tr>
+}

@@ -1,0 +1,13 @@
+package templates
+
+import "github.com/pulsone21/threattrack/frontend/templates/components"
+
+templ Index() {
+	<html lang="en">
+		@components.Head()
+		<body class={ "bg-primary text-font p-0 m-0" }>
+			@components.MainNavbar()
+			<div id="contentBody"></div>
+		</body>
+	</html>
+}

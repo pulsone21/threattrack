@@ -44,7 +44,7 @@
         <div id="contentBody" class="grow flex">
             <!-- start of content body -->
 
-            <div class="inc-grid font-body grow">
+            <div class="inc-grid font-body">
                 <div class="col-span-full inc-grid-el ">
                     <div class="flex flex-row justify-arround grow">
                         <div><span class="font-h3">{ fmt.Sprintf("%s - %s", incName, PageName) }</span></div>
@@ -88,7 +88,7 @@
                     </ul>
                 </div>
                 <div class="inc-grid-el col-start-4 col-span-1 row-span-2">Customer Infos </div>
-                <div class="inc-grid-el col-start-5 col-span-1 row-span-2 vertical-container">
+                <div class="inc-grid-el col-start-5 col-span-1 row-span-2">
                     <div>
                         <span class="font-h4">Owner</span>
                         if (inc.Owner == nil) {
@@ -101,11 +101,11 @@
                         }
                     </div>
                     <div>
-                        <span class="font-h4">Contributors</span>
+                        <span class="font-h5">Contributors</span>
                         <ul>
-                            <li>Contro 1</li>
-                            <li>Contro 2</li>
-                            <li>Contro 2</li>
+                            <li class="font-small">Contro 1</li>
+                            <li class="font-small">Contro 2</li>
+                            <li class="font-small">Contro 2</li>
                         </ul>
                     </div>
                 </div>
@@ -115,43 +115,41 @@
                         NOT IMPLEMENTED YET
                     </div>
                 </div>
-                <div class="inc-grid-el col-start-3 col-span-full row-start-4 ">
+                <div class="inc-grid-el col-start-3 col-span-full row-start-4">
                     <p class="font-h4">Worklogs</p>
-                    <div>
-                        <p>Most Recent</p>
-                        <ul class="worklog-list">
-                            if (len(ws) < 1 ) { <li>No worklogs</li>
-                                } else {
-                                for _,w := range ws {
-                                @Worklog(w)
-                                }
-                                }
-                        </ul>
+                    <div class="flex flex-row">
                         <div>
-                            <div class="editor-container">
-                                <div style="margin: 5px 5px 0px 5px;" class="vertical-container">
-                                    <button class="btn">Bold</button>
-                                    <button class="btn">Underline</button>
-                                    <button class="btn">Italic</button>
-                                    <button class="btn">Bold</button>
-                                    <button class="btn">Underline</button>
-                                    <button class="btn">Italic</button>
-                                    <button class="btn">Bold</button>
-                                    <button class="btn">Underline</button>
-                                    <button class="btn">Italic</button>
-                                </div>
-                                <hr />
-                                <textarea name="worklog" id="worklog_editor" cols="30" rows="5"></textarea>
-                                <div style="margin-top:15px ;">
-                                    <button class="btn">Create a new one</button>
-                                </div>
+                            <p>Most Recent</p>
+                            <ul class="p-l5 max-h-[520px] overflow-auto pr-20">
+                                if (len(ws) < 1 ) { <li>No worklogs</li>
+                                    } else {
+                                    for _,w := range ws {
+                                    @Worklog(w)
+                                    }
+                                    }
+                            </ul>
+                        </div>
+                        <div class="editor-container">
+                            <div style="margin: 5px 5px 0px 5px;" class="vertical-container">
+                                <button class="btn">Bold</button>
+                                <button class="btn">Underline</button>
+                                <button class="btn">Italic</button>
+                                <button class="btn">Bold</button>
+                                <button class="btn">Underline</button>
+                                <button class="btn">Italic</button>
+                                <button class="btn">Bold</button>
+                                <button class="btn">Underline</button>
+                                <button class="btn">Italic</button>
+                            </div>
+                            <hr class="bg-secondary text-secondary border border-secondary" />
+                            <textarea name="worklog" id="worklog_editor" cols="30" rows="5"></textarea>
+                            <div style="margin-top:15px ;">
+                                <button class="btn">Create a new one</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
 
 
             <!-- END OF CONTENT BODY -->

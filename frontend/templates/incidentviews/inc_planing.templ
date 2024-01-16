@@ -1,11 +1,13 @@
-package templates
+package incidentviews
 
 import "github.com/pulsone21/threattrack/lib/entities"
+import "github.com/pulsone21/threattrack/frontend/templates/incidentviews/components"
+import "github.com/pulsone21/threattrack/frontend/templates/components"
 
 templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities.Task) {
 	<div class="inc-grid font-body" style="height: calc(100vh - 72px)">
-		@IncHeader(inc.Name, "Planing")
-		@IncNavbar(inc.Id.String())
+		@incComponents.IncHeader(inc.Name, "Planing")
+		@incComponents.IncNavbar(inc.Id.String())
 		<div class="grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar flex">
 			<button class="clickableEl" title="Summary View">
 				<img style="width: 35px; height: 35px" src="assets/inc_home.svg" alt="Summary View"/>
@@ -40,27 +42,27 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
             {{end}} -->
 			</div>
 		</div>
-		<div class="inc-grid-el grid_rs2re6_cs3ce4">
+		<div class={ "inc-grid-el col-span-1 col-start-3 row-span-1 row-start-2" }>
 			<p class="font-h3">Backlog</p>
 			<div class="task-list">
 				for _, item := range backlog {
-					@TaskItem(item)
+					@components.TaskItem(item)
 				}
 			</div>
 		</div>
-		<div class="inc-grid-el grid_rs2re6_cs4ce5">
+		<div class="inc-grid-el col-span-1 col-start-4 row-span-1 row-start-2">
 			<p class="font-h3">Doing</p>
 			<div class="task-list">
 				for _, item := range doings {
-					@TaskItem(item)
+					@components.TaskItem(item)
 				}
 			</div>
 		</div>
-		<div class="inc-grid-el grid_rs2re6_cs5ce6">
+		<div class="inc-grid-el col-span-1 col-start-5 row-span-1 row-start-2">
 			<p class="font-h3">Done</p>
 			<div class="task-list">
 				for _, item := range doings {
-					@TaskItem(item)
+					@components.TaskItem(item)
 				}
 			</div>
 		</div>

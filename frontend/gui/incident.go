@@ -66,7 +66,6 @@ func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.Respon
 	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
-		// Handle the Error
 		return entities.InternalServerError(http.ErrAbortHandler, uri)
 	}
 	resbody, err := io.ReadAll(res.Body)
@@ -74,11 +73,7 @@ func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.Respon
 		fmt.Println(err.Error())
 		return entities.InternalServerError(err, uri)
 	}
-	tmpl, err := template.ParseFiles(fmt.Sprintf("%s/incidentTable.html", iH.templatePath))
-	if err != nil {
-		fmt.Println(err.Error())
-		return entities.InternalServerError(err, uri)
-	}
+
 	var data backendData
 	fmt.Println("defining the struct")
 	if err = json.Unmarshal(resbody, &data); err != nil {
@@ -86,10 +81,9 @@ func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.Respon
 		return entities.InternalServerError(err, uri)
 	}
 	fmt.Println("struct unmarshaled")
-	fmt.Println(data.Data)
-	if err = tmpl.Execute(w, incTableViewData{
-		Incidents: data.Data,
-	}); err != nil {
+
+	page := templates.IncTablePage(data.Data)
+	if err = page.Render(ctx, w); err != nil {
 		return entities.InternalServerError(err, uri)
 	}
 	return nil

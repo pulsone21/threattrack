@@ -1,0 +1,48 @@
+package incidentviews
+
+import "github.com/pulsone21/threattrack/lib/entities"
+import "github.com/pulsone21/threattrack/frontend/templates/incidentviews/components"
+
+templ IncTable( incs []entities.Incident) {
+	<div>
+		<div class="horizontal-container">
+			<div class="mt-[15px] flex flex-row, justify-between items-center max-h-10">
+				<button class="btn">Dummy Button</button>
+				<!-- TODO <input type="date"> Create a usefull date picker like splunk or something -->
+				<div id="incSearchBar" class="flex items-center bg-primary-900 p-1 border-primary-900 border-solid border rounded-md w-2/3 h-1/3 hover:border-secondary-700">
+					<input
+						type="text"
+						class="bg-inherit border-none focus:ring-0 block w-full placeholder:text-font-900"
+						placeholder="Search for Incidents"
+					/>
+				</div>
+			</div>
+			<div id="incidentActionBar" class="vertical-container" style="justify-content:flex-start !important">
+				<button class="btn">Select All</button>
+				<button class="btn">Button 2</button>
+				<button class="btn">Button 3</button>
+				<button class="btn">Button 4</button>
+				<button class="btn">Button 5</button>
+				<button class="btn">Button 6</button>
+			</div>
+			<div>
+				<table>
+					<thead>
+						<th style="width: 20px !important;" class="font-h4"></th>
+						<th class="font-h4">ID</th>
+						<th class="font-h4">Title</th>
+						<th class="font-h4">Status</th>
+						<th class="font-h4">Severity</th>
+						<th class="font-h4">Type</th>
+						<th class="font-h4">Owner</th>
+					</thead>
+					<tbody class="font-body">
+						for _,inc := range incs {
+							@incComponents.IncRowItem(inc)
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+}
