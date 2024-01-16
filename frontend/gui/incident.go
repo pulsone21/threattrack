@@ -2,10 +2,7 @@ package gui
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
-	"html/template"
-	"io"
 	"net/http"
 	"os"
 
@@ -15,17 +12,9 @@ import (
 )
 
 type IncidentHandler struct {
+	backendBase   string
 	backendAdress string
 	templatePath  string
-}
-type incTableViewData struct {
-	Incidents []entities.Incident
-}
-
-type backendData struct {
-	StatusCode int
-	RequestUrl string
-	Data       []entities.Incident
 }
 
 type incPlaningViewData struct {
@@ -47,6 +36,7 @@ func (iH *IncidentHandler) createHandles(s *Server) {
 func CreateIncidentHandler(ser *Server, backendBase string) *IncidentHandler {
 	wd, _ := os.Getwd()
 	iH := &IncidentHandler{
+		backendBase:   backendBase,
 		backendAdress: fmt.Sprintf("%s/incidents", backendBase),
 		templatePath:  "frontend/templates/incident",
 	}
@@ -58,31 +48,11 @@ func CreateIncidentHandler(ser *Server, backendBase string) *IncidentHandler {
 func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.ResponseWriter, r *http.Request) *entities.ApiError {
 	uri := ctx.Value("uri").(string)
 	fmt.Printf("\nrequesting backend with %s \n", iH.backendAdress)
-	res, err := http.Get(iH.backendAdress)
+	incData, err := requestData[entities.Incident](iH.backendAdress)
 	if err != nil {
-		fmt.Println(err.Error())
 		return entities.InternalServerError(err, uri)
 	}
-	defer res.Body.Close()
-
-	if res.StatusCode != http.StatusOK {
-		return entities.InternalServerError(http.ErrAbortHandler, uri)
-	}
-	resbody, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println(err.Error())
-		return entities.InternalServerError(err, uri)
-	}
-
-	var data backendData
-	fmt.Println("defining the struct")
-	if err = json.Unmarshal(resbody, &data); err != nil {
-		fmt.Println(err.Error())
-		return entities.InternalServerError(err, uri)
-	}
-	fmt.Println("struct unmarshaled")
-
-	page := templates.IncTablePage(data.Data)
+	page := templates.IncTablePage(incData.Data)
 	if err = page.Render(ctx, w); err != nil {
 		return entities.InternalServerError(err, uri)
 	}
@@ -94,19 +64,16 @@ func (iH *IncidentHandler) serveIncidentPage(ctx context.Context, w http.Respons
 	incId := r.URL.Query().Get("id")
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
-
-	res, err := http.Get(url)
+	incData, err := requestData[entities.Incident](url)
 	if err != nil {
-		fmt.Println("Error in backend request")
 		return entities.InternalServerError(err, uri)
 	}
-	var data backendData
-	if err = json.NewDecoder(res.Body).Decode(&data); err != nil {
-		fmt.Println("Error in decoding of response content")
+
+	wlData, err := requestData[entities.Worklog](fmt.Sprintf("%s/worklogs?incident=%s", iH.backendBase, incId))
+	if err != nil {
 		return entities.InternalServerError(err, uri)
 	}
-	//TODO Implement the worklog stuff
-	page := templates.IncSummaryPage(data.Data[0], nil)
+	page := templates.IncSummaryPage(incData.Data[0], wlData.Data)
 
 	if err = page.Render(ctx, w); err != nil {
 		return entities.InternalServerError(err, uri)
@@ -119,21 +86,16 @@ func (iH *IncidentHandler) serveIncidentWorklog(ctx context.Context, w http.Resp
 	incId := r.URL.Query().Get("id")
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
-
-	res, err := http.Get(url)
+	incData, err := requestData[entities.Incident](url)
 	if err != nil {
 		return entities.InternalServerError(err, uri)
 	}
-	var inc entities.Incident
-	if err = json.NewDecoder(res.Body).Decode(&inc); err != nil {
-		return entities.InternalServerError(err, uri)
-	}
-
-	tmpl, err := iH.loadTemplate("incidentWorklogs.html")
+	wlData, err := requestData[entities.Worklog](fmt.Sprintf("%s/worklogs?incident=%s", iH.backendBase, incId))
 	if err != nil {
 		return entities.InternalServerError(err, uri)
 	}
-	if err = tmpl.Execute(w, inc); err != nil {
+	page := templates.IncWorklogPage(incData.Data[0], wlData.Data)
+	if err = page.Render(ctx, w); err != nil {
 		return entities.InternalServerError(err, uri)
 	}
 	return nil
@@ -145,16 +107,12 @@ func (iH *IncidentHandler) serveIncidentPlaning(ctx context.Context, w http.Resp
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 
-	res, err := http.Get(url)
+	incData, err := requestData[entities.Incident](url)
 	if err != nil {
 		return entities.InternalServerError(err, uri)
 	}
-	var data backendData
-	if err = json.NewDecoder(res.Body).Decode(&data); err != nil {
-		return entities.InternalServerError(err, uri)
-	}
 
-	vD := iH.createPlaningViewData(data.Data[0])
+	vD := iH.createPlaningViewData(incData.Data[0])
 	fmt.Println(vD)
 	page := templates.IncPlaningPage(vD.Incident, vD.Backlog, vD.Doing, vD.Done)
 
@@ -170,22 +128,18 @@ func (iH *IncidentHandler) serveIncidentiocView(ctx context.Context, w http.Resp
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 
-	res, err := http.Get(url)
+	_, err := requestData[entities.Incident](url)
 	if err != nil {
-		return entities.InternalServerError(err, uri)
-	}
-	var inc entities.Incident
-	if err = json.NewDecoder(res.Body).Decode(&inc); err != nil {
 		return entities.InternalServerError(err, uri)
 	}
 
-	tmpl, err := iH.loadTemplate("incidentIOCView.html")
-	if err != nil {
-		return entities.InternalServerError(err, uri)
-	}
-	if err = tmpl.Execute(w, inc); err != nil {
-		return entities.InternalServerError(err, uri)
-	}
+	// tmpl, err := iH.loadTemplate("incidentIOCView.html")
+	// if err != nil {
+	// 	return entities.InternalServerError(err, uri)
+	// }
+	// if err = tmpl.Execute(w, incData.Data[0]); err != nil {
+	// 	return entities.InternalServerError(err, uri)
+	// }
 	return nil
 }
 
@@ -207,8 +161,4 @@ func (iH *IncidentHandler) createPlaningViewData(inc entities.Incident) *incPlan
 		Doing:    doing,
 		Done:     done,
 	}
-}
-
-func (iH *IncidentHandler) loadTemplate(templ string) (*template.Template, error) {
-	return template.ParseFiles(fmt.Sprintf("%s/%s", iH.templatePath, templ), fmt.Sprintf("%s/partials/com_incNavbar.html", iH.templatePath), fmt.Sprintf("%s/partials/com_incHeader.html", iH.templatePath))
 }
