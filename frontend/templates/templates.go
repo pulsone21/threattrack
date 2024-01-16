@@ -18,3 +18,7 @@ func IncSummaryPage(incident entities.Incident, wl []entities.Worklog) templ.Com
 func IncTablePage(incs []entities.Incident) templ.Component {
 	return incidentviews.IncTable(incs)
 }
+
+func IncWorklogPage(incident entities.Incident, wl []entities.Worklog) templ.Component {
+	return incidentviews.IncWorklogPage(incident, wl)
+}

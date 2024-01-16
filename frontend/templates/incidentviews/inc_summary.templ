@@ -9,7 +9,7 @@ import (
 )
 
 templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
-	<div class="font-body">
+	<div class="inc-grid font-body">
 		@incComponents.IncHeader(inc.Name, "Summary")
 		@incComponents.IncNavbar(inc.Id.String())
 		<div class="inc-grid-el col-start-2 col-span-1 row-span-2">
