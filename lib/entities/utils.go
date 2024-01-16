@@ -7,6 +7,10 @@ import (
 )
 
 type Entity interface {
+	Incident | IncidentType | Task | Worklog | User
+}
+
+type Scanable interface {
 	ScanTo(ScanFunc) error
 }
 
