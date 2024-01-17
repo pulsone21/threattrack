@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/gorilla/mux"
 	"github.com/pulsone21/threattrack/frontend/templates"
 	"github.com/pulsone21/threattrack/lib/entities"
 	"github.com/pulsone21/threattrack/lib/utils"
@@ -27,10 +28,11 @@ type incPlaningViewData struct {
 
 func (iH *IncidentHandler) createHandles(s *Server) {
 	s.Router.HandleFunc("/incidentTable/", utils.CreateHtmlHandleFunc(iH.serveIncidentTable)).Methods("GET")
-	s.Router.HandleFunc("/incident/summary", utils.CreateHtmlHandleFunc(iH.serveIncidentPage)).Methods("GET")
-	s.Router.HandleFunc("/incident/worklog", utils.CreateHtmlHandleFunc(iH.serveIncidentWorklog)).Methods("GET")
-	s.Router.HandleFunc("/incident/planing", utils.CreateHtmlHandleFunc(iH.serveIncidentPlaning)).Methods("GET")
-	s.Router.HandleFunc("/incident/iocView", utils.CreateHtmlHandleFunc(iH.serveIncidentiocView)).Methods("GET")
+	s.Router.HandleFunc("/incident/{id}", utils.CreateHtmlHandleFunc(iH.serveIncidentIndex)).Methods("GET")
+	s.Router.HandleFunc("/incident/{id}/summary", utils.CreateHtmlHandleFunc(iH.serveIncidentPage)).Methods("GET")
+	s.Router.HandleFunc("/incident/{id}/worklog", utils.CreateHtmlHandleFunc(iH.serveIncidentWorklog)).Methods("GET")
+	s.Router.HandleFunc("/incident/{id}/planing", utils.CreateHtmlHandleFunc(iH.serveIncidentPlaning)).Methods("GET")
+	s.Router.HandleFunc("/incident/{id}/iocView", utils.CreateHtmlHandleFunc(iH.serveIncidentiocView)).Methods("GET")
 }
 
 func CreateIncidentHandler(ser *Server, backendBase string) *IncidentHandler {
@@ -59,9 +61,30 @@ func (iH *IncidentHandler) serveIncidentTable(ctx context.Context, w http.Respon
 	return nil
 }
 
+func (iH *IncidentHandler) serveIncidentIndex(ctx context.Context, w http.ResponseWriter, r *http.Request) *entities.ApiError {
+	uri := ctx.Value("uri").(string)
+	incId := mux.Vars(r)["id"]
+	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
+	fmt.Printf("\nrequesting backend with %s \n", url)
+	incData, err := requestData[entities.Incident](url)
+	if err != nil {
+		return entities.InternalServerError(err, uri)
+	}
+	wlData, err := requestData[entities.Worklog](fmt.Sprintf("%s/worklogs?incident=%s", iH.backendBase, incId))
+	if err != nil {
+		return entities.InternalServerError(err, uri)
+	}
+
+	page := templates.IncIndexPage(incData.Data[0], wlData.Data)
+	if err = page.Render(ctx, w); err != nil {
+		return entities.InternalServerError(err, uri)
+	}
+	return nil
+}
+
 func (iH *IncidentHandler) serveIncidentPage(ctx context.Context, w http.ResponseWriter, r *http.Request) *entities.ApiError {
 	uri := ctx.Value("uri").(string)
-	incId := r.URL.Query().Get("id")
+	incId := mux.Vars(r)["id"]
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 	incData, err := requestData[entities.Incident](url)
@@ -83,7 +106,7 @@ func (iH *IncidentHandler) serveIncidentPage(ctx context.Context, w http.Respons
 
 func (iH *IncidentHandler) serveIncidentWorklog(ctx context.Context, w http.ResponseWriter, r *http.Request) *entities.ApiError {
 	uri := ctx.Value("uri").(string)
-	incId := r.URL.Query().Get("id")
+	incId := mux.Vars(r)["id"]
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 	incData, err := requestData[entities.Incident](url)
@@ -103,7 +126,7 @@ func (iH *IncidentHandler) serveIncidentWorklog(ctx context.Context, w http.Resp
 
 func (iH *IncidentHandler) serveIncidentPlaning(ctx context.Context, w http.ResponseWriter, r *http.Request) *entities.ApiError {
 	uri := ctx.Value("uri").(string)
-	incId := r.URL.Query().Get("id")
+	incId := mux.Vars(r)["id"]
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 
@@ -124,7 +147,7 @@ func (iH *IncidentHandler) serveIncidentPlaning(ctx context.Context, w http.Resp
 
 func (iH *IncidentHandler) serveIncidentiocView(ctx context.Context, w http.ResponseWriter, r *http.Request) *entities.ApiError {
 	uri := ctx.Value("uri").(string)
-	incId := r.URL.Query().Get("id")
+	incId := mux.Vars(r)["id"]
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 

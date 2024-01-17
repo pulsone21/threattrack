@@ -22,3 +22,7 @@ func IncTablePage(incs []entities.Incident) templ.Component {
 func IncWorklogPage(incident entities.Incident, wl []entities.Worklog) templ.Component {
 	return incidentviews.IncWorklogPage(incident, wl)
 }
+
+func IncIndexPage(incident entities.Incident, wl []entities.Worklog) templ.Component {
+	return incidentviews.IncidentIndex(incident, wl)
+}
