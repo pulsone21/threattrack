@@ -20,7 +20,7 @@ type RequestTask struct {
 
 type TaskStore struct {
 	storage *MySqlStorage
-	EntityStore[*entities.Task]
+	EntityStore[entities.Task]
 	db *sql.DB
 }
 

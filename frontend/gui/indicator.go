@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/pulsone21/threattrack/lib/entities"
 	"github.com/pulsone21/threattrack/lib/utils"
 )
@@ -96,7 +97,7 @@ func (iH *IndicatorHandler) serveIncidentTable(ctx context.Context, w http.Respo
 
 func (iH *IndicatorHandler) serveIndicatorPage(ctx context.Context, w http.ResponseWriter, r *http.Request) (*entities.ApiResponse, *entities.ApiError) {
 	uri := ctx.Value("uri").(string)
-	incId := r.URL.Query().Get("id")
+	incId := mux.Vars(r)["id"]
 	url := fmt.Sprintf("%s/%s", iH.backendAdress, incId)
 	fmt.Printf("\nrequesting backend with %s \n", url)
 

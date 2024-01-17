@@ -16,7 +16,7 @@ type RequestUser struct {
 
 type UserStore struct {
 	storage *MySqlStorage
-	EntityStore[*entities.User]
+	EntityStore[entities.User]
 	db *sql.DB
 }
 
