@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  important: true,
   content: ["./frontend/**/*.{templ,html}"],
   theme: {
     extend: {
@@ -58,15 +59,9 @@ module.exports = {
         },
         font: {
           DEFAULT: "#dfeaf6",
-          100: "#c7dbef",
-          200: "#a7c6e6",
-          300: "#88b1dd",
-          400: "#689cd4",
-          500: "#4888cb",
-          600: "#3473b7",
-          700: "#2b5f97",
-          800: "#224b77",
-          900: "#193758",
+          100: "#bfd2edcc",
+          200: "#a0c1e480",
+          300: "#80acdb4d",
         },
       },
       fontFamily: {
