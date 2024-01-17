@@ -4,34 +4,47 @@ import (
 	"fmt"
 	"github.com/pulsone21/threattrack/lib/entities"
 	"github.com/pulsone21/threattrack/frontend/templates/components"
-	"github.com/pulsone21/threattrack/frontend/templates/viewutils"
 	"github.com/pulsone21/threattrack/frontend/templates/incidentviews/components"
+	"github.com/pulsone21/threattrack/frontend/templates/viewutils"
 )
 
 templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
 	<div class="inc-grid font-body">
 		@incComponents.IncHeader(inc.Name, "Summary")
 		@incComponents.IncNavbar(inc.Id.String())
-		<div class="inc-grid-el col-start-2 col-span-1 row-span-2">
+		<div class="inc-grid-el col-start-2 col-span-1 row-span-1">
 			<ul>
-				<li>{ fmt.Sprint(inc.Status) }</li>
-				<li>{ fmt.Sprint(inc.IncidentType) }</li>
-				<li>{ fmt.Sprint(inc.Severity) }</li>
+				<li>
+					@components.DisplayItem("Status", fmt.Sprint(inc.Status))
+				</li>
+				<li>
+					@components.DisplayItem("Type", inc.IncidentType.Name)
+				</li>
+				<li>
+					@components.DisplayItem("Severity", fmt.Sprint(inc.Severity))
+				</li>
 			</ul>
 		</div>
-		<div class="inc-grid-el col-start-3 col-span-1 row-span-2">
+		<div class="inc-grid-el col-start-3 col-span-1 row-span-1">
 			<ul>
-				<li>{ viewutils.ToTimestamp(inc.Creationdate).String() }</li>
-				<li>last Updated At</li>
-				<li>Closed at</li>
+				<li>
+					@components.DisplayItem("Created At", viewutils.ToTimestamp(inc.Creationdate).String())
+				</li>
+				<li>
+					@components.DisplayItem("last Updated At", "n/a")
+				</li>
+				<li>
+					@components.DisplayItem("Closed at:", "n/a")
+				</li>
 			</ul>
 		</div>
-		<div class="inc-grid-el col-start-4 col-span-1 row-span-2">Customer Infos </div>
-		<div class="inc-grid-el col-start-5 col-span-1 row-span-2">
+		<div class="inc-grid-el col-start-4 col-span-1 row-span-1">Customer Infos </div>
+		<div class="inc-grid-el col-start-5 col-span-1 row-span-1">
 			<div>
 				<span class="font-h4">Owner</span>
 				if (inc.Owner == nil) {
-					<span>No owner</span>
+					<br/>
+					<span class="font-base">No owner</span>
 				} else {
 					<ul>
 						<li>{ fmt.Sprint(inc.Owner.Fullname) }</li>
@@ -39,6 +52,7 @@ templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
 					</ul>
 				}
 			</div>
+			<br/>
 			<div>
 				<span class="font-h5">Contributors</span>
 				<ul>
@@ -48,17 +62,18 @@ templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
 				</ul>
 			</div>
 		</div>
-		<div class="inc-grid-el row-start-4 col-span-2 !border-none !bg-transparent  ">
+		<div class="inc-grid-el row-start-3 col-span-2 !border-none !bg-transparent row-span-2  ">
 			<p class="font-h4">Activities</p>
 			<div class="timeline">
 				NOT IMPLEMENTED YET
 			</div>
 		</div>
-		<div class="inc-grid-el col-start-3 col-span-full row-start-4">
-			<p class="font-h4">Worklogs</p>
-			<div class="flex flex-row">
-				<div>
-					<p>Most Recent</p>
+		<div class="inc-grid-el col-start-3 col-span-full row-start-3 row-span-2 flex flex-col">
+			<div class="flex flex-row grow">
+				<div class="w-1/2">
+					<p class="font-h4">Worklogs</p>
+					<br/>
+					<p class="text-sm">Most Recent</p>
 					<ul class="p-l5 max-h-[520px] overflow-auto pr-20">
 						if (len(ws) < 1 ) {
 							<li>No worklogs</li>
@@ -69,24 +84,7 @@ templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
 						}
 					</ul>
 				</div>
-				<div class="editor-container">
-					<div style="margin: 5px 5px 0px 5px;" class="vertical-container">
-						<button class="btn">Bold</button>
-						<button class="btn">Underline</button>
-						<button class="btn">Italic</button>
-						<button class="btn">Bold</button>
-						<button class="btn">Underline</button>
-						<button class="btn">Italic</button>
-						<button class="btn">Bold</button>
-						<button class="btn">Underline</button>
-						<button class="btn">Italic</button>
-					</div>
-					<hr class="bg-secondary text-secondary border border-secondary"/>
-					<textarea name="worklog" id="worklog_editor" cols="30" rows="5"></textarea>
-					<div style="margin-top:15px ;">
-						<button class="btn">Create a new one</button>
-					</div>
-				</div>
+				@incComponents.WorklogEditor()
 			</div>
 		</div>
 	</div>

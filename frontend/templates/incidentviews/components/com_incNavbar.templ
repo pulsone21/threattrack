@@ -3,12 +3,12 @@ package incComponents
 import "fmt"
 
 templ IncNavbar(id string) {
-	<div class="col-span-1 row-span-2 inc-grid-el inc-grid-actionbar">
+	<div class="col-span-1 row-span-1 inc-grid-el inc-grid-actionbar">
 		<div
 			class="clickableEl"
 			title="Summary View"
 			hx-target="#contentBody"
-			hx-get={ fmt.Sprintf("/incident/summary?id=%s", id) }
+			hx-get={ fmt.Sprintf("/incident/%s/summary", id) }
 		>
 			<img style="width: 35px; height: 35px" src="/assets/inc_home.svg" alt="Summary View"/>
 		</div>
@@ -16,7 +16,7 @@ templ IncNavbar(id string) {
 			class="clickableEl"
 			title="Worklogs"
 			hx-target="#contentBody"
-			hx-get={ fmt.Sprintf("/incident/worklog?id=%s", id) }
+			hx-get={ fmt.Sprintf("/incident/%s/worklog", id) }
 		>
 			<img style="width: 35px; height: 35px" src="/assets/feed.svg" alt="Worklogs"/>
 		</div>
@@ -24,7 +24,7 @@ templ IncNavbar(id string) {
 			class="clickableEl"
 			title="Planning"
 			hx-target="#contentBody"
-			hx-get={ fmt.Sprintf("/incident/planing?id=%s", id) }
+			hx-get={ fmt.Sprintf("/incident/%s/planing", id) }
 		>
 			<img style="width: 35px; height: 35px" src="/assets/planing.svg" alt="Planning"/>
 		</div>
@@ -32,7 +32,7 @@ templ IncNavbar(id string) {
 			class="clickableEl"
 			title="IOC View"
 			hx-target="#contentBody"
-			hx-get={ fmt.Sprintf("/incident/iocView?id=%s", id) }
+			hx-get={ fmt.Sprintf("/incident/%s/iocView", id) }
 		>
 			<img style="width: 35px; height: 35px" src="/assets/IOCView.svg" alt="IOC View"/>
 		</div>

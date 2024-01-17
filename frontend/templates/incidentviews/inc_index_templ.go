@@ -34,7 +34,7 @@ func IncidentIndex(inc entities.Incident, wl []entities.Worklog) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var2 = []any{"bg-primary text-font p-0 m-0"}
+		var templ_7745c5c3_Var2 = []any{"bg-primary text-font p-0 m-0 flex flex-col h-screen"}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var2...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -55,7 +55,7 @@ func IncidentIndex(inc entities.Incident, wl []entities.Worklog) templ.Component
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"contentBody\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div id=\"contentBody\" class=\"flex grow\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

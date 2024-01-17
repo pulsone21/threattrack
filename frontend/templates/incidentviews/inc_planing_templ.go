@@ -27,7 +27,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid font-body\" style=\"height: calc(100vh - 72px)\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid font-body\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -39,7 +39,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar flex\"><button class=\"clickableEl\" title=\"Summary View\"><img style=\"width: 35px; height: 35px\" src=\"/assets/inc_home.svg\" alt=\"Summary View\"></button> <button class=\"clickableEl\" title=\"Worklogs\"><img style=\"width: 35px; height: 35px\" src=\"/assets/feed.svg\" alt=\"Worklogs\"></button> <button class=\"clickableEl\" title=\"Planning\"><img style=\"width: 35px; height: 35px\" src=\"/assets/planing.svg\" alt=\"Planning\"></button> <button class=\"clickableEl\" title=\"IOC View\"><img style=\"width: 35px; height: 35px\" src=\"/assets/IOCView.svg\" alt=\"IOC View\"></button></div><div class=\"inc-grid-el grid_rs2re6_cs2ce3\"><p class=\"font-h3\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid-el inc-grid-actionbar flex col-start-1 col-span-1 row-start-3 row-span-3\"><button class=\"clickableEl\" title=\"Summary View\"><img style=\"width: 35px; height: 35px\" src=\"/assets/inc_home.svg\" alt=\"Summary View\"></button> <button class=\"clickableEl\" title=\"Worklogs\"><img style=\"width: 35px; height: 35px\" src=\"/assets/feed.svg\" alt=\"Worklogs\"></button> <button class=\"clickableEl\" title=\"Planning\"><img style=\"width: 35px; height: 35px\" src=\"/assets/planing.svg\" alt=\"Planning\"></button> <button class=\"clickableEl\" title=\"IOC View\"><img style=\"width: 35px; height: 35px\" src=\"/assets/IOCView.svg\" alt=\"IOC View\"></button></div><div class=\"inc-grid-el col-start-2 col-span-1 row-start-2 row-span-4\"><p class=\"font-h3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -75,7 +75,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		var templ_7745c5c3_Var4 = []any{"inc-grid-el col-span-1 col-start-3 row-span-1 row-start-2"}
+		var templ_7745c5c3_Var4 = []any{"inc-grid-el col-span-1 col-start-3 row-span-4 row-start-2"}
 		templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var4...)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -107,7 +107,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"inc-grid-el col-span-1 col-start-4 row-span-1 row-start-2\"><p class=\"font-h3\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"inc-grid-el col-span-1 col-start-4 row-span-4 row-start-2\"><p class=\"font-h3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -126,7 +126,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"inc-grid-el col-span-1 col-start-5 row-span-1 row-start-2\"><p class=\"font-h3\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div></div><div class=\"inc-grid-el col-span-1 col-start-5 row-span-4 row-start-2\"><p class=\"font-h3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

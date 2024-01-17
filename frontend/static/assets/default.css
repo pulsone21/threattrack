@@ -20,9 +20,9 @@
 
   --col-highlight: hsl(121, 77%, 55%);
   --col-font: hsl(211, 56%, 92%);
-  --col-font-shade-1: hsla(216, 56%, 84%, 0.8);
-  --col-font-shade-2: hsla(211, 56%, 76%, 0.502);
-  --col-font-shade-3: hsl(211, 56%, 68%, 0.3);
+  --col-font-shade-1: #bfd2edcc;
+  --col-font-shade-2: #a0c1e480;
+  --col-font-shade-3: #80acdb4d;
 }
 
 ul {
@@ -31,7 +31,7 @@ ul {
 
 li {
   list-style-type: none !important;
-  margin: 15px 0px;
+  margin: 0px;
 }
 
 p {
@@ -238,9 +238,10 @@ td {
 
 /* Incident Grid Fields */
 .inc-grid {
+  height: 100%;
   display: grid;
   grid-template-columns: 4% 21% repeat(3, 24%);
-  grid-template-rows: 80px 250px 250px repeat(1, 1fr);
+  grid-template-rows: 50px 250px 250px auto;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
   padding: 10px;
@@ -459,7 +460,7 @@ textarea {
   resize: none;
   /*remove the resize handle on the bottom right*/
 }
-
+/* 
 #worklog_editor {
   position: relative;
   width: 100%;
@@ -471,7 +472,7 @@ textarea {
   color: var(--col-font);
   padding: 5px;
   transition: border-color 0.2s ease;
-}
+} */
 
 #worklog_editor:hover {
   outline: 0;
@@ -483,14 +484,6 @@ textarea {
   outline: 0;
   border: 1px solid var(--col-sec-shade-3);
   border-radius: 5px;
-}
-
-.editor-container {
-  padding: 5px;
-  border: 1px solid var(--col-sec);
-  border-radius: 5px;
-  background-color: var(--col-main);
-  box-shadow: 0px 0px 2px var(--col-sec);
 }
 
 .verdict-Neutral {

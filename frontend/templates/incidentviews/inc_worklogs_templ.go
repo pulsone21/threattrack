@@ -58,102 +58,12 @@ func IncWorklogPage(inc entities.Incident, wl []entities.Worklog) templ.Componen
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</ul></div><div class=\"grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar\"><button class=\"clickableEl\" title=\"Summary View\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/inc_home.svg\" alt=\"Summary View\"></button> <button class=\"clickableEl\" title=\"Worklogs\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/feed.svg\" alt=\"Worklogs\"></button> <button class=\"clickableEl\" title=\"Planning\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/planing.svg\" alt=\"Planning\"></button> <button class=\"clickableEl\" title=\"IOC View\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/IOCView.svg\" alt=\"IOC View\"></button></div><div class=\"inc-grid-el grid_rs2re6_cs4ce6\" style=\"display: flex; flex-direction: row; justify-content: space-between;\"><div class=\"editor-container\"><div style=\"margin: 5px 5px 0px 5px;\" class=\"vertical-container\"><button class=\"btn\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</ul></div><div class=\"grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar\"><button class=\"clickableEl\" title=\"Summary View\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/inc_home.svg\" alt=\"Summary View\"></button> <button class=\"clickableEl\" title=\"Worklogs\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/feed.svg\" alt=\"Worklogs\"></button> <button class=\"clickableEl\" title=\"Planning\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/planing.svg\" alt=\"Planning\"></button> <button class=\"clickableEl\" title=\"IOC View\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/IOCView.svg\" alt=\"IOC View\"></button></div><div class=\"inc-grid-el grid_rs2re6_cs4ce6\" style=\"display: flex; flex-direction: row; justify-content: space-between;\"><div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Var3 := `Bold`
+		templ_7745c5c3_Var3 := `Preview`
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var3)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var4 := `Underline`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var4)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var5 := `Italic`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var5)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var6 := `Bold`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var6)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var7 := `Underline`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var7)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var8 := `Italic`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var8)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var9 := `Bold`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var9)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var10 := `Underline`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var10)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button> <button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var11 := `Italic`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var11)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button></div><hr><textarea name=\"worklog\" id=\"worklog_editor\" cols=\"30\" rows=\"250\" style=\"height: 90% !important;\"></textarea><div style=\"margin-top:15px ;\"><button class=\"btn\">")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var12 := `Create a new one`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var12)
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</button></div></div><div>")
-		if templ_7745c5c3_Err != nil {
-			return templ_7745c5c3_Err
-		}
-		templ_7745c5c3_Var13 := `Preview`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var13)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

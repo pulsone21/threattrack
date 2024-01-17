@@ -6,9 +6,9 @@ import "github.com/pulsone21/threattrack/frontend/templates/components"
 templ IncidentIndex(inc entities.Incident, wl []entities.Worklog) {
 	<html lang="en">
 		@components.Head()
-		<body class={ "bg-primary text-font p-0 m-0" }>
+		<body class={ "bg-primary text-font p-0 m-0 flex flex-col h-screen" }>
 			@components.MainNavbar()
-			<div id="contentBody">
+			<div id="contentBody" class="flex grow">
 				@IncidentSummaryPage(inc, wl)
 			</div>
 		</body>
