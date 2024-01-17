@@ -1,0 +1,16 @@
+package incidentviews
+
+import "github.com/pulsone21/threattrack/lib/entities"
+import "github.com/pulsone21/threattrack/frontend/templates/components"
+
+templ IncidentIndex(inc entities.Incident, wl []entities.Worklog) {
+	<html lang="en">
+		@components.Head()
+		<body class={ "bg-primary text-font p-0 m-0" }>
+			@components.MainNavbar()
+			<div id="contentBody">
+				@IncidentSummaryPage(inc, wl)
+			</div>
+		</body>
+	</html>
+}

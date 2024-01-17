@@ -24,7 +24,7 @@ func MainNavbar() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"navbar grow-0 h-[50px] flex flex-row justify-between items-center px-10 bg-primary-800\"><div class=\"logo-section vertical-container\"><a class=\"clickableEl\" title=\"Home\" href=\"/\"><img src=\"assets/Logo.svg\" alt=\"Logo Goes here\"></a><h3 class=\"font-h3\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<nav class=\"navbar grow-0 h-[50px] flex flex-row justify-between items-center px-10 bg-primary-800\"><div class=\"logo-section vertical-container\"><a class=\"clickableEl\" title=\"Home\" href=\"/\"><img src=\"/assets/Logo.svg\" alt=\"Logo Goes here\"></a><h3 class=\"font-h3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -33,7 +33,7 @@ func MainNavbar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3></div><div id=\"searchBar\" class=\"flex items-center bg-primary-900 p-2 border-primary-900 border-solid border rounded-md w-1/3 h-2/3 hover:border-secondary-700\"><input type=\"text\" class=\"bg-inherit border-none focus:ring-0 block w-full h-2/3 placeholder:text-font-900\" placeholder=\"Search for something...\"></div><div class=\"vertical-container actionBar\"><button class=\"clickableEl\" title=\"Dashboard\" hx-get=\"/dashboard/\" hx-target=\"#contentBody\"><img src=\"assets/dashboard.svg\" alt=\"Dashboard\"></button> <button class=\"clickableEl\" title=\"Incidents\" hx-get=\"/incidentTable/\" hx-target=\"#contentBody\"><img src=\"assets/Incidents.svg\" alt=\"Incidents\"></button> <button class=\"clickableEl\" title=\"Indicators\" hx-get=\"/indicatorTable/\" hx-target=\"#contentBody\"><img src=\"assets/Indicator.svg\" alt=\"IOCs\"></button> <button class=\"clickableEl\" title=\"Settings\" hx-get=\"/settings/\" hx-target=\"#contentBody\"><img src=\"assets/settings.svg\" alt=\"Settings\"></button> <button class=\"clickableEl\" title=\"LogOut\" hx-get=\"/logout\" hx-target=\"#contentBody\"><img src=\"assets/logout.svg\" alt=\"Logout\"></button></div></nav>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</h3></div><div id=\"searchBar\" class=\"flex items-center bg-primary-900 p-2 border-primary-900 border-solid border rounded-md w-1/3 h-2/3 hover:border-secondary-700\"><input type=\"text\" class=\"bg-inherit border-none focus:ring-0 block w-full h-2/3 placeholder:text-font-900\" placeholder=\"Search for something...\"></div><div class=\"vertical-container actionBar\"><button class=\"clickableEl\" title=\"Dashboard\" hx-get=\"/dashboard/\" hx-target=\"#contentBody\"><img src=\"/assets/dashboard.svg\" alt=\"Dashboard\"></button> <button class=\"clickableEl\" title=\"Incidents\" hx-get=\"/incidentTable/\" hx-target=\"#contentBody\"><img src=\"/assets/Incidents.svg\" alt=\"Incidents\"></button> <button class=\"clickableEl\" title=\"Indicators\" hx-get=\"/indicatorTable/\" hx-target=\"#contentBody\"><img src=\"/assets/Indicator.svg\" alt=\"IOCs\"></button> <button class=\"clickableEl\" title=\"Settings\" hx-get=\"/settings/\" hx-target=\"#contentBody\"><img src=\"/assets/settings.svg\" alt=\"Settings\"></button> <button class=\"clickableEl\" title=\"LogOut\" hx-get=\"/logout\" hx-target=\"#contentBody\"><img src=\"/assets/logout.svg\" alt=\"Logout\"></button></div></nav>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

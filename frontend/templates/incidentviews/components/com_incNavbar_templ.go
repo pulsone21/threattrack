@@ -33,7 +33,7 @@ func IncNavbar(id string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"assets/inc_home.svg\" alt=\"Summary View\"></div><div class=\"clickableEl\" title=\"Worklogs\" hx-target=\"#contentBody\" hx-get=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"/assets/inc_home.svg\" alt=\"Summary View\"></div><div class=\"clickableEl\" title=\"Worklogs\" hx-target=\"#contentBody\" hx-get=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -41,7 +41,7 @@ func IncNavbar(id string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"assets/feed.svg\" alt=\"Worklogs\"></div><div class=\"clickableEl\" title=\"Planning\" hx-target=\"#contentBody\" hx-get=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"/assets/feed.svg\" alt=\"Worklogs\"></div><div class=\"clickableEl\" title=\"Planning\" hx-target=\"#contentBody\" hx-get=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -49,7 +49,7 @@ func IncNavbar(id string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"assets/planing.svg\" alt=\"Planning\"></div><div class=\"clickableEl\" title=\"IOC View\" hx-target=\"#contentBody\" hx-get=\"")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"/assets/planing.svg\" alt=\"Planning\"></div><div class=\"clickableEl\" title=\"IOC View\" hx-target=\"#contentBody\" hx-get=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -57,7 +57,7 @@ func IncNavbar(id string) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"assets/IOCView.svg\" alt=\"IOC View\"></div></div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\"><img style=\"width: 35px; height: 35px\" src=\"/assets/IOCView.svg\" alt=\"IOC View\"></div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -11,13 +11,13 @@ templ TaskItem(task entities.Task) {
 				<p class="font-small">Owner: { fmt.Sprint(task.Owner.Fullname) }</p>
 				switch task.Priority {
 					case entities.Critical:
-						<img src="assets/prioCritical.svg" alt="Critical Priority" title="Critical Priority"/>
+						<img src="/assets/prioCritical.svg" alt="Critical Priority" title="Critical Priority"/>
 					case entities.High:
-						<img src="assets/prioHigh.svg" alt="High Priority" title="High Priority"/>
+						<img src="/assets/prioHigh.svg" alt="High Priority" title="High Priority"/>
 					case entities.Medium:
-						<img src="assets/prioMedium.svg" alt="Medium Priority" title="Medium Priority"/>
+						<img src="/assets/prioMedium.svg" alt="Medium Priority" title="Medium Priority"/>
 					default:
-						<img src="assets/prioLow.svg" alt="Low Priority" title="Low Priority"/>
+						<img src="/assets/prioLow.svg" alt="Low Priority" title="Low Priority"/>
 				}
 			</div>
 		</div>

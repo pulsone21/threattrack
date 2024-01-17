@@ -7,7 +7,7 @@ templ IncRowItem(inc entities.Incident) {
 	<tr>
 		<td style="width: 20px !important;"><input type="checkbox" class="incSelector" id={ inc.Id.String() }/></td>
 		<td style="width: 370px !important;"><span>{ inc.Id.String() }</span></td>
-		<td><div class="clickableText" hx-target="#contentBody" hx-get={ fmt.Sprintf("/incident/summary?id=%s", inc.Id) }><span>{ inc.Name }</span></div></td>
+		<td><a class="clickableText" href={ templ.URL(fmt.Sprintf("/incident/%s", inc.Id)) }><span>{ inc.Name }</span></a></td>
 		<td style="width: 80px !important;"><span>open</span></td>
 		<td style="width: 80px !important;"><span>{ fmt.Sprint(inc.Severity) }</span></td>
 		<td style="width: 80px !important;"><span>{ inc.IncidentType.Name }</span></td>

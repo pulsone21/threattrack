@@ -63,22 +63,22 @@ func TaskItem(task entities.Task) templ.Component {
 		}
 		switch task.Priority {
 		case entities.Critical:
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"assets/prioCritical.svg\" alt=\"Critical Priority\" title=\"Critical Priority\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"/assets/prioCritical.svg\" alt=\"Critical Priority\" title=\"Critical Priority\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case entities.High:
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"assets/prioHigh.svg\" alt=\"High Priority\" title=\"High Priority\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"/assets/prioHigh.svg\" alt=\"High Priority\" title=\"High Priority\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		case entities.Medium:
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"assets/prioMedium.svg\" alt=\"Medium Priority\" title=\"Medium Priority\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"/assets/prioMedium.svg\" alt=\"Medium Priority\" title=\"Medium Priority\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		default:
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"assets/prioLow.svg\" alt=\"Low Priority\" title=\"Low Priority\">")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<img src=\"/assets/prioLow.svg\" alt=\"Low Priority\" title=\"Low Priority\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
