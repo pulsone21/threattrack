@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ThreatTrack</title>
-    <link rel="stylesheet" href="assets/output.css" type="text/css">
-    <link rel="icon" href="assets/Logo.svg">
+    <link rel="stylesheet" href="/frontend/static/assets/output.css" type="text/css">
+    <link rel="icon" href="/frontend/static/assets/Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,144 +16,166 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-primary text-font p-0 m-0">
-    <div class="flex flex-col h-full">
-        <nav class="navbar grow-0 h-[50px] flex flex-row justify-between items-center px-10 bg-primary-800">
-            <div class="logo-section vertical-container">
-                <a class="clickableEl" title="Home" href="/"><img src="assets/Logo.svg" alt="Logo Goes here"></a>
-                <h3 class="font-h3">ThreatTrack</h3>
-            </div>
-            <div id="searchBar"
-                class="flex items-center bg-primary-900 p-5 border-primary-900 border-solid border rounded-md w-1/3 h-2/3 hover:border-secondary-700">
-                <input type="text" class="bg-inherit border-none focus:ring-0 block w-full placeholder:text-font-900"
-                    placeholder="Search for something...">
-            </div>
-            <div class="vertical-container actionBar">
-                <button class="clickableEl" title="Dashboard" hx-get="/dashboard/" hx-target="#contentBody"><img
-                        src="assets/dashboard.svg" alt="Dashboard"></img></button>
-                <button class="clickableEl" title="Incidents" hx-get="/incidentTable/" hx-target="#contentBody"><img
-                        src="assets/Incidents.svg" alt="Incidents"></img></button>
-                <button class="clickableEl" title="Indicators" hx-get="/indicatorTable/" hx-target="#contentBody"><img
-                        src="assets/Indicator.svg" alt="IOCs"></img></button>
-                <button class="clickableEl" title="Settings" hx-get="/settings/" hx-target="#contentBody"><img
-                        src="assets/settings.svg" alt="Settings"></img></button>
-                <button class="clickableEl" title="LogOut" hx-get="/logout" hx-target="#contentBody"><img
-                        src="assets/logout.svg" alt="Logout"></img></button>
-            </div>
-        </nav>
-        <div id="contentBody" class="grow flex">
-            <!-- start of content body -->
-
-            <div class="inc-grid font-body">
-                <div class="col-span-full inc-grid-el ">
-                    <div class="flex flex-row justify-arround grow">
-                        <div><span class="font-h3">{ fmt.Sprintf("%s - %s", incName, PageName) }</span></div>
-                        <div class="vertical-container">
-                            <button class="btn">Do Something</button>
-                            <button class="btn">Somehting other</button>
-                            <button class="btn">Close</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-span-1 row-span-2 inc-grid-el inc-grid-actionbar">
-                    <div class="clickableEl" title="Summary View" hx-target="#contentBody" hx-get={
-                        fmt.Sprintf("/incident/summary?id=%s", id) }>
-                        <img style="width: 35px; height: 35px" src="assets/inc_home.svg" alt="Summary View" />
-                    </div>
-                    <div class="clickableEl" title="Worklogs" hx-target="#contentBody" hx-get={
-                        fmt.Sprintf("/incident/worklog?id=%s", id) }>
-                        <img style="width: 35px; height: 35px" src="assets/feed.svg" alt="Worklogs" />
-                    </div>
-                    <div class="clickableEl" title="Planning" hx-target="#contentBody" hx-get={
-                        fmt.Sprintf("/incident/planing?id=%s", id) }>
-                        <img style="width: 35px; height: 35px" src="assets/planing.svg" alt="Planning" />
-                    </div>
-                    <div class="clickableEl" title="IOC View" hx-target="#contentBody" hx-get={
-                        fmt.Sprintf("/incident/iocView?id=%s", id) }>
-                        <img style="width: 35px; height: 35px" src="assets/IOCView.svg" alt="IOC View" />
-                    </div>
-                </div>
-                <div class="inc-grid-el col-start-2 col-span-1 row-span-2">
-                    <ul>
-                        <li>{ fmt.Sprint(inc.Status) }</li>
-                        <li>{ fmt.Sprint(inc.IncidentType) }</li>
-                        <li>{ fmt.Sprint(inc.Severity) }</li>
-                    </ul>
-                </div>
-                <div class="inc-grid-el col-start-3 col-span-1 row-span-2">
-                    <ul>
-                        <li>{ toTimestamp(inc.Creationdate).String() }</li>
-                        <li>last Updated At</li>
-                        <li>Closed at</li>
-                    </ul>
-                </div>
-                <div class="inc-grid-el col-start-4 col-span-1 row-span-2">Customer Infos </div>
-                <div class="inc-grid-el col-start-5 col-span-1 row-span-2">
-                    <div>
-                        <span class="font-h4">Owner</span>
-                        if (inc.Owner == nil) {
-                        <span>No owner</span>
-                        } else {
-                        <ul>
-                            <li>{ fmt.Sprint(inc.Owner.Fullname) }</li>
-                            <li>{ fmt.Sprint(inc.Owner.Email) }</li>
-                        </ul>
-                        }
-                    </div>
-                    <div>
-                        <span class="font-h5">Contributors</span>
-                        <ul>
-                            <li class="font-small">Contro 1</li>
-                            <li class="font-small">Contro 2</li>
-                            <li class="font-small">Contro 2</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="inc-grid-el row-start-4 col-span-2 !border-none !bg-transparent  ">
-                    <p class="font-h4">Activities</p>
-                    <div class="timeline">
-                        NOT IMPLEMENTED YET
-                    </div>
-                </div>
-                <div class="inc-grid-el col-start-3 col-span-full row-start-4">
-                    <p class="font-h4">Worklogs</p>
-                    <div class="flex flex-row">
-                        <div>
-                            <p>Most Recent</p>
-                            <ul class="p-l5 max-h-[520px] overflow-auto pr-20">
-                                if (len(ws) < 1 ) { <li>No worklogs</li>
-                                    } else {
-                                    for _,w := range ws {
-                                    @Worklog(w)
-                                    }
-                                    }
-                            </ul>
-                        </div>
-                        <div class="editor-container">
-                            <div style="margin: 5px 5px 0px 5px;" class="vertical-container">
-                                <button class="btn">Bold</button>
-                                <button class="btn">Underline</button>
-                                <button class="btn">Italic</button>
-                                <button class="btn">Bold</button>
-                                <button class="btn">Underline</button>
-                                <button class="btn">Italic</button>
-                                <button class="btn">Bold</button>
-                                <button class="btn">Underline</button>
-                                <button class="btn">Italic</button>
-                            </div>
-                            <hr class="bg-secondary text-secondary border border-secondary" />
-                            <textarea name="worklog" id="worklog_editor" cols="30" rows="5"></textarea>
-                            <div style="margin-top:15px ;">
-                                <button class="btn">Create a new one</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- END OF CONTENT BODY -->
+<body class="bg-primary text-font p-0 m-0 flex flex-col h-screen">
+    <nav class="navbar grow-0 h-[50px] flex flex-row justify-between items-center px-10 bg-primary-800">
+        <div class="logo-section vertical-container">
+            <a class="clickableEl" title="Home" href="/"><img src="/assets/Logo.svg" alt="Logo Goes here" /></a>
+            <h3 class="font-h3">ThreatTrack</h3>
         </div>
+        <div id="searchBar"
+            class="flex items-center bg-primary-900 p-2 border-primary-900 border-solid border rounded-md w-1/3 h-2/3 hover:border-secondary-700">
+            <input type="text" class="bg-inherit border-none focus:ring-0 block w-full h-2/3 placeholder:text-font-900"
+                placeholder="Search for something..." />
+        </div>
+        <div class="vertical-container actionBar">
+            <button class="clickableEl" title="Dashboard" hx-get="/dashboard/" hx-target="#contentBody">
+                <img src="/assets/dashboard.svg" alt="Dashboard" />
+            </button>
+            <button class="clickableEl" title="Incidents" hx-get="/incidentTable/" hx-target="#contentBody">
+                <img src="/assets/Incidents.svg" alt="Incidents" />
+            </button>
+            <button class="clickableEl" title="Indicators" hx-get="/indicatorTable/" hx-target="#contentBody">
+                <img src="/assets/Indicator.svg" alt="IOCs" />
+            </button>
+            <button class="clickableEl" title="Settings" hx-get="/settings/" hx-target="#contentBody">
+                <img src="/assets/settings.svg" alt="Settings" />
+            </button>
+            <button class="clickableEl" title="LogOut" hx-get="/logout" hx-target="#contentBody">
+                <img src="/assets/logout.svg" alt="Logout" />
+            </button>
+        </div>
+    </nav>
+    <div id="contentBody" class="flex grow">
+        <div class="inc-grid font-body">
+            <div class="col-span-full inc-grid-el ">
+                <div class="flex flex-row justify-arround grow">
+                    <div><span class="font-h3">{ fmt.Sprintf("%s - %s", incName, PageName) }</span></div>
+                    <div class="vertical-container">
+                        <button class={ "btn" }>Do Something</button>
+                        <button class="btn">Somehting other</button>
+                        <button class="btn">Close</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-1 row-span-1 inc-grid-el inc-grid-actionbar">
+                <div class="clickableEl" title="Summary View" hx-target="#contentBody" hx-get={
+                    fmt.Sprintf("/incident/%s/summary", id) }>
+                    <img style="width: 35px; height: 35px" src="/assets/inc_home.svg" alt="Summary View" />
+                </div>
+                <div class="clickableEl" title="Worklogs" hx-target="#contentBody" hx-get={
+                    fmt.Sprintf("/incident/%s/worklog", id) }>
+                    <img style="width: 35px; height: 35px" src="/assets/feed.svg" alt="Worklogs" />
+                </div>
+                <div class="clickableEl" title="Planning" hx-target="#contentBody" hx-get={
+                    fmt.Sprintf("/incident/%s/planing", id) }>
+                    <img style="width: 35px; height: 35px" src="/assets/planing.svg" alt="Planning" />
+                </div>
+                <div class="clickableEl" title="IOC View" hx-target="#contentBody" hx-get={
+                    fmt.Sprintf("/incident/%s/iocView", id) }>
+                    <img style="width: 35px; height: 35px" src="/assets/IOCView.svg" alt="IOC View" />
+                </div>
+            </div>
+            <div class="inc-grid-el col-start-2 col-span-1 row-span-1">
+                <ul>
+                    <li>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black">Status</span>
+                            <span class="ml-4 font-light text-base text-font-100">Open</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black">Type</span>
+                            <span class="ml-4 font-light text-base text-font-100">CSIRTaaS</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex flex-col">
+                            <span class="text-lg font-black">Severity</span>
+                            <p class="ml-4 font-light text-font-100 text-base ">
+                                Critical</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="inc-grid-el col-start-3 col-span-1 row-span-1">
+                <ul>
+                    <li>{ viewutils.ToTimestamp(inc.Creationdate).String() }</li>
+                    <li>last Updated At</li>
+                    <li>Closed at</li>
+                </ul>
+            </div>
+            <div class="inc-grid-el col-start-4 col-span-1 row-span-1">Customer Infos </div>
+            <div class="inc-grid-el col-start-5 col-span-1 row-span-1">
+                <div>
+                    <span class="font-h4">Owner</span>
+                    if (inc.Owner == nil) {
+                    <span>No owner</span>
+                    } else {
+                    <ul>
+                        <li>{ fmt.Sprint(inc.Owner.Fullname) }</li>
+                        <li>{ fmt.Sprint(inc.Owner.Email) }</li>
+                    </ul>
+                    }
+                </div>
+                <div>
+                    <span class="font-h5">Contributors</span>
+                    <ul>
+                        <li class="font-small">Contro 1</li>
+                        <li class="font-small">Contro 2</li>
+                        <li class="font-small">Contro 2</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="inc-grid-el row-start-3 col-span-2 !border-none !bg-transparent row-span-2  ">
+                <p class="font-h4">Activities</p>
+                <div class="timeline">
+                    NOT IMPLEMENTED YET
+                </div>
+            </div>
+            <div class="inc-grid-el col-start-3 col-span-full row-start-3 row-span-2 flex flex-col">
+                <div class="flex flex-row grow">
+                    <div class="w-1/2">
+                        <p class="font-h4">Worklogs</p>
+                        <br />
+                        <p>Most Recent</p>
+                        <ul class="p-l5 max-h-[520px] overflow-auto pr-20">
+                            if (len(ws) < 1 ) { <li>No worklogs</li>
+                                } else {
+                                for _,w := range ws {
+                                @components.Worklog(w)
+                                }
+                                }
+                        </ul>
+                    </div>
+                    <div
+                        class="p-1 border border-solid border-secondary rounded-md bg-primary shadow-md shadow-secondary grow flex flex-col">
+                        <div class="flex flex-row justify-around items-center mx-0.5 mt-0.5">
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                            <button class="btn text-base">b</button>
+                        </div>
+                        <hr class="bg-secondary text-secondary border border-secondary my-1" />
+                        <textarea name="worklog" id="worklog_editor"
+                            class="mx-0.5 grow bg-tertiary border border-solid border-transparent rounded-md outline-none text-font p-1 transition-colors duration-200 ease-in-out"></textarea>
+                        <div class="mt-1">
+                            <button class="btn text-base">Create Worklog</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- END OF CONTENT BODY -->
+    </div>
+    </div>
     </div>
 </body>
 
