@@ -27,7 +27,7 @@ func IncWorklogPage(inc entities.Incident, wl []entities.Worklog) templ.Componen
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid font-body\" style=\"height: calc(100vh - 72px);\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -39,7 +39,7 @@ func IncWorklogPage(inc entities.Incident, wl []entities.Worklog) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid-el grid_rs2re6_cs2ce4 \"><p class=\"font-h4\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"inc-grid-el col-span-1 col-start-2 row-start-2 row-span-4\"><p class=\"text-lg font-bold\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -48,22 +48,54 @@ func IncWorklogPage(inc entities.Incident, wl []entities.Worklog) templ.Componen
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><ul class=\"worklog-list\" style=\"max-height: 95%; overflow:auto;\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		for _, w := range wl {
-			templ_7745c5c3_Err = components.Worklog(w).Render(ctx, templ_7745c5c3_Buffer)
+		if len(wl) == 0 {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<span class=\"!text-sm mt-1 !text-font-200\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Var3 := `No worklogs found`
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var3)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</span>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		} else {
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<ul class=\"worklog-list\" style=\"max-height: 95%; overflow:auto;\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, w := range wl {
+				templ_7745c5c3_Err = components.Worklog(w).Render(ctx, templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</ul>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</ul></div><div class=\"grid_rs4re6_cs1_ce2 inc-grid-el inc-grid-actionbar\"><button class=\"clickableEl\" title=\"Summary View\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/inc_home.svg\" alt=\"Summary View\"></button> <button class=\"clickableEl\" title=\"Worklogs\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/feed.svg\" alt=\"Worklogs\"></button> <button class=\"clickableEl\" title=\"Planning\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/planing.svg\" alt=\"Planning\"></button> <button class=\"clickableEl\" title=\"IOC View\"><img style=\"width: 35px; height: 35px;\" src=\"/assets/IOCView.svg\" alt=\"IOC View\"></button></div><div class=\"inc-grid-el grid_rs2re6_cs4ce6\" style=\"display: flex; flex-direction: row; justify-content: space-between;\"><div>")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"row-start-3 col-start-1 row-span-3 col-span-1 inc-grid-el\"></div><div class=\"inc-grid-el row-start-2 row-span-4 col-start-3 col-span-3 flex flex-row\"><div class=\"w-1/2 mr-3 h-[95%]\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Var3 := `Preview`
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var3)
+		templ_7745c5c3_Err = incComponents.WorklogEditor().Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div><div class=\"grow\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Var4 := `Preview`
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ_7745c5c3_Var4)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

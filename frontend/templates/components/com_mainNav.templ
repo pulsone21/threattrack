@@ -3,9 +3,11 @@ package components
 // TODO enable State of user sign in
 templ MainNavbar() {
 	<nav class="navbar grow-0 h-[50px] flex flex-row justify-between items-center px-10 bg-primary-800">
-		<div class="logo-section vertical-container">
-			<a class="clickableEl" title="Home" href="/"><img src="/assets/Logo.svg" alt="Logo Goes here"/></a>
-			<h3 class="font-h3">ThreatTrack</h3>
+		<div class="logo-section">
+			<a class="clickableEl flex flex-row justify-between items-center" title="Home" href="/">
+				<img src="/assets/Logo.svg" alt="Logo Goes here"/>
+				<h3 class="font-h3">ThreatTrack</h3>
+			</a>
 		</div>
 		<div
 			id="searchBar"
@@ -18,31 +20,31 @@ templ MainNavbar() {
 			/>
 		</div>
 		<div class="vertical-container actionBar">
-			<button class="clickableEl" title="Dashboard" hx-get="/dashboard/" hx-target="#contentBody">
+			<button class="clickableEl flex justify-center items-center" title="Dashboard" hx-get="/dashboard/" hx-target="#contentBody">
 				<img
 					src="/assets/dashboard.svg"
 					alt="Dashboard"
 				/>
 			</button>
-			<button class="clickableEl" title="Incidents" hx-get="/incidentTable/" hx-target="#contentBody">
+			<button class="clickableEl flex justify-center items-center" title="Incidents" hx-get="/incidentTable/" hx-target="#contentBody">
 				<img
 					src="/assets/Incidents.svg"
 					alt="Incidents"
 				/>
 			</button>
-			<button class="clickableEl" title="Indicators" hx-get="/indicatorTable/" hx-target="#contentBody">
+			<button class="clickableEl flex justify-center items-center" title="Indicators" hx-get="/indicatorTable/" hx-target="#contentBody">
 				<img
 					src="/assets/Indicator.svg"
 					alt="IOCs"
 				/>
 			</button>
-			<button class="clickableEl" title="Settings" hx-get="/settings/" hx-target="#contentBody">
+			<button class="clickableEl flex justify-center items-center" title="Settings" hx-get="/settings/" hx-target="#contentBody">
 				<img
 					src="/assets/settings.svg"
 					alt="Settings"
 				/>
 			</button>
-			<button class="clickableEl" title="LogOut" hx-get="/logout" hx-target="#contentBody">
+			<button class="clickableEl flex justify-center items-center" title="LogOut" hx-get="/logout" hx-target="#contentBody">
 				<img
 					src="/assets/logout.svg"
 					alt="Logout"

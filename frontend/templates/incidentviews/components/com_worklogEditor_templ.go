@@ -23,7 +23,7 @@ func WorklogEditor() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"p-1 border border-solid border-secondary rounded-md bg-primary shadow-md shadow-secondary grow flex flex-col my-2\"><div class=\"flex flex-row justify-center items-center mx-0.5 mt-0.5\"><button class=\"btn text-base !mx-2\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"p-1 border border-solid border-secondary rounded-md bg-primary shadow-md shadow-secondary grow flex flex-col my-2 h-full\"><div class=\"flex flex-row justify-center items-center mx-0.5 mt-0.5\"><button class=\"btn text-base !mx-2\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

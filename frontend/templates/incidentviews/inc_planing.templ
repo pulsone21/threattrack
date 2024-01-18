@@ -24,6 +24,7 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
 		</div>
 		<div class="inc-grid-el col-start-2 col-span-1 row-start-2 row-span-4">
 			<p class="font-h3">Playbooks</p>
+			<hr class="bg-secondary text-secondary border border-secondary my-1"/>
 			<div class="task-list">
 				<!-- 
             {{range .Playbooks}}
@@ -44,6 +45,7 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
 		</div>
 		<div class={ "inc-grid-el col-span-1 col-start-3 row-span-4 row-start-2" }>
 			<p class="font-h3">Backlog</p>
+			<hr class="bg-secondary text-secondary border border-secondary my-1"/>
 			<div class="task-list">
 				for _, item := range backlog {
 					@components.TaskItem(item)
@@ -52,6 +54,7 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
 		</div>
 		<div class="inc-grid-el col-span-1 col-start-4 row-span-4 row-start-2">
 			<p class="font-h3">Doing</p>
+			<hr class="bg-secondary text-secondary border border-secondary my-1"/>
 			<div class="task-list">
 				for _, item := range doings {
 					@components.TaskItem(item)
@@ -60,6 +63,7 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
 		</div>
 		<div class="inc-grid-el col-span-1 col-start-5 row-span-4 row-start-2">
 			<p class="font-h3">Done</p>
+			<hr class="bg-secondary text-secondary border border-secondary my-1"/>
 			<div class="task-list">
 				for _, item := range doings {
 					@components.TaskItem(item)

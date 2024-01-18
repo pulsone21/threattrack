@@ -48,7 +48,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><div class=\"task-list\"><!--")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"bg-secondary text-secondary border border-secondary my-1\"><div class=\"task-list\"><!--")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -97,7 +97,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><div class=\"task-list\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"bg-secondary text-secondary border border-secondary my-1\"><div class=\"task-list\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -116,7 +116,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><div class=\"task-list\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"bg-secondary text-secondary border border-secondary my-1\"><div class=\"task-list\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -135,7 +135,7 @@ func IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entities
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><div class=\"task-list\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p><hr class=\"bg-secondary text-secondary border border-secondary my-1\"><div class=\"task-list\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

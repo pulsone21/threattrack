@@ -84,7 +84,9 @@ templ IncidentSummaryPage(inc entities.Incident, ws []entities.Worklog) {
 						}
 					</ul>
 				</div>
-				@incComponents.WorklogEditor()
+				<div class="h-[95%] grow">
+					@incComponents.WorklogEditor()
+				</div>
 			</div>
 		</div>
 	</div>
