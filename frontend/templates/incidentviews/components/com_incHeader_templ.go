@@ -25,7 +25,7 @@ func IncHeader(incName, PageName string) templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"col-span-full inc-grid-el \"><div class=\"flex flex-row justify-arround grow\"><div><span class=\"font-h3\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<div class=\"col-span-full inc-grid-el \"><div class=\"flex flex-row justify-between grow\"><div><span class=\"font-h3\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

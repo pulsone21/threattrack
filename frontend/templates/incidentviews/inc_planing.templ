@@ -23,7 +23,10 @@ templ IncidentPlaningPage(inc entities.Incident, doings, backlog, done []entitie
 			</button>
 		</div>
 		<div class="inc-grid-el col-start-2 col-span-1 row-start-2 row-span-4">
-			<p class="font-h3">Playbooks</p>
+			<div class="flex flex-row justify-between ">
+				<p class="font-h3">Playbooks</p>
+				<button class="btn text-xs">Create task</button>
+			</div>
 			<hr class="bg-secondary text-secondary border border-secondary my-1"/>
 			<div class="task-list">
 				<!-- 

@@ -4,7 +4,7 @@ import "fmt"
 
 templ IncHeader(incName, PageName string ) {
 	<div class="col-span-full inc-grid-el ">
-		<div class="flex flex-row justify-arround grow">
+		<div class="flex flex-row justify-between grow">
 			<div><span class="font-h3">{ fmt.Sprintf("%s - %s", incName, PageName) }</span></div>
 			<div class="vertical-container">
 				<button class={ "btn" }>Do Something</button>
