@@ -32,7 +32,6 @@ setup_db:
 	@echo "db setuped"
 
 
-
 build_dataservice: refresh_deps
 	@echo "Building dataservice"
 	@go build -o ./bin/dataserviceexe ./cmd/dataservice/main.go
@@ -49,6 +48,14 @@ build_frontend: refresh_deps tailwind_build
 run_frontend: build_frontend
 	@echo "Running frontend"
 	@./bin/frontendexe
+
+docker_build_dataservice: refresh_deps
+	@echo "Building dataservice container"
+	@docker build -t backend:test -f ./cmd/dataservice/dockerfile .
+
+docker_build_frontend: refresh_deps
+	@echo "Building dataservice container"
+	@docker build -t frontend:test -f ./cmd/frontend/dockerfile .
 
 test: start_db reset_db setup_db generate_data create_test_img
 	@docker start TestBackend

@@ -1,3 +1,4 @@
+version: "3.8"
 services:
   db:
     container_name: DB
@@ -15,13 +16,15 @@ services:
       timeout: 1s
       retries: 40
     networks:
-      - backend
+      - internal
     volumes:
       - ./database/db:/var/lib/mysql
 
-  backend:
-    container_name: Backend
-    build: ./cmd/dataservice
+  dataservice:
+    container_name: dataservice
+    build:
+      context: ./
+      dockerfile: ./cmd/dataservice/dockerfile
     env_file:
       - .env
     ports:
@@ -30,25 +33,27 @@ services:
       db:
         condition: service_healthy
     networks:
-      - frontend
-      - backend
+      - public
+      - internal
     restart: on-failure
 
   frontend:
-    container_name: Frontend
-    build: ./cmd/frontend
+    container_name: frontend
+    build:
+      context: ./
+      dockerfile: ./cmd/frontend/dockerfile
     env_file:
       - .env
     ports:
       - ${FRONTEND_PORT}:${FRONTEND_PORT}
     depends_on:
-      - backend
+      - dataservice
     networks:
-      - frontend
-      - backend
+      - public
+      - internal
     restart: on-failure
 
 networks:
-  backend:
+  internal:
     internal: true
-  frontend:
+  public:
